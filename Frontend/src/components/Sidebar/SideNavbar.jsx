@@ -25,11 +25,7 @@ const CustomSidebar = ({ visible, onHide }) => {
         </div>
         <ul className="sidebar-links">
           <li>
-            <Link
-              to={"/"}
-              className="sidebar-link"
-              onClick={handleLinkClick}
-            >
+            <Link to={"/"} className="sidebar-link" onClick={handleLinkClick}>
               <i className="pi pi-home"></i> Dashboard
             </Link>
           </li>
@@ -39,23 +35,13 @@ const CustomSidebar = ({ visible, onHide }) => {
               className="sidebar-link"
               onClick={handleLinkClick}
             >
-              <i className="pi pi-users"></i> Users
+              <i className="pi pi-users"></i> Requests
             </Link>
           </li>
-
           <li>
-            <Link
-              to={ROUTES.SETTING}
-              className="sidebar-link "
-              onClick={handleLinkClick}
-            >
-              <i className="pi pi-cog"></i>
-              Settings
+            <Link to={"/"} className="sidebar-link" onClick={handleLogout}>
+              <i className="pi pi-users"></i> Logout
             </Link>
-          </li>
-          <li className=" py-2 px-4 rext-black" onClick={() => handleLogout()}>
-            <i className="pi pi-sign-out pr-2"></i>
-            Logout
           </li>
         </ul>
       </div>
