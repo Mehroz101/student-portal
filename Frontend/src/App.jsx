@@ -5,6 +5,7 @@ import {
   Layout,
   Login,
   ProtectedRoute,
+  Requests,
   Setting,
   Signup,
   Users,
@@ -65,6 +66,7 @@ function AppRoutes() {
       <Route path="/" element={<ProtectedRoute element={<Layout />} />}>
         <Route index element={<Home />} />
         <Route path={ROUTES.USERS} element={<Users />} />
+        <Route path={ROUTES.REQUESTS} element={<Requests />} />
         <Route path={ROUTES.SETTING} element={<Setting />} />
       </Route>
     </Routes>

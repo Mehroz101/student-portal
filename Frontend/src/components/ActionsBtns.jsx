@@ -1,4 +1,7 @@
 import {
+  faBookmark,
+  faCircleCheck,
+  faCross,
   faEye,
   faPencil,
   faShuffle,
@@ -15,6 +18,9 @@ const ActionsBtns = ({
   onDelete = null,
   onView = null,
   onTransfer = null,
+  onAccept = null,
+  onReject = null,
+  onBookmark = null,
 }) => {
   const navigate = useNavigate();
 
@@ -56,6 +62,30 @@ const ActionsBtns = ({
           className="p-button p-button-warning mr-2"
           onClick={() => onTransfer && onTransfer(rowData)}
           tooltip="shift"
+        />
+      )}
+      {onAccept && (
+        <Button
+          icon={<FontAwesomeIcon icon={faCircleCheck} />}
+          className="p-button p-button-success mr-2"
+          onClick={() => onAccept && onAccept(rowData)}
+          tooltip="Approved"
+        />
+      )}
+      {onReject && (
+        <Button
+          icon={<FontAwesomeIcon icon={faCross} />}
+          className="p-button p-button-danger mr-2"
+          onClick={() => onReject && onReject(rowData)}
+          tooltip="Rejected"
+        />
+      )}
+      {onBookmark && (
+        <Button
+          icon={<FontAwesomeIcon icon={faBookmark} />}
+          className="p-button p-button-warning mr-2"
+          onClick={() => onBookmark && onBookmark(rowData)}
+          tooltip="Bookmark"
         />
       )}
     </div>
