@@ -3,11 +3,17 @@ import React from 'react';
 import '../styles/Footer.css';
 
 const Footer = () => {
+  const scrollToId = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h3>University Name</h3>
+          <h3>Alumni Hub</h3>
           <p>Address, City, Country</p>
           <p>Email: info@university.com</p>
           <p>Phone: +123 456 7890</p>
@@ -15,10 +21,9 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/programs">Programs</a></li>
-            <li><a href="/events">Events</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li onClick={() => scrollToId('about')}>About Us</li>
+            <li onClick={() => scrollToId('events')}>Events</li>
+        
           </ul>
         </div>
         <div className="footer-section">
@@ -32,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} University Name. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Alumni Hub. All Rights Reserved.</p>
       </div>
     </footer>
   );

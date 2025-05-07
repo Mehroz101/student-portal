@@ -13,13 +13,13 @@ const Navbar2 = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <a href="/" className="brand-logo">University Name</a>
+        <a href="/" className="brand-logo">Alumni Hub</a>
       </div>
       <div className={`navbar-links ${isMobile ? 'mobile' : ''}`}>
         <ul>
         <li onClick={() => scrollToId('hero')}>Home</li>
         <li onClick={() => scrollToId('about')}>About</li>
-        <li onClick={() => scrollToId('programs')}>Programs</li>
+        <li onClick={() => scrollToId('events')}>Events</li>
         </ul>
       </div>
       <div className="hamburger" onClick={() => setIsMobile(!isMobile)}>
