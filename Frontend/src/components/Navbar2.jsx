@@ -11,13 +11,14 @@ const Navbar2 = () => {
     }
   };
   return (
-    <nav className="navbar">
+    <nav className="navbar2">
       <div className="navbar-brand">
-        <a href="/" className="brand-logo">Alumni Hub</a>
+        <a href="/home" className="brand-logo">Alumni Hub</a>
       </div>
       <div className={`navbar-links ${isMobile ? 'mobile' : ''}`}>
         <ul>
         <li onClick={() => scrollToId('hero')}>Home</li>
+        <li onClick={() => scrollToId('std')}>Students</li>
         <li onClick={() => scrollToId('about')}>About</li>
         <li onClick={() => scrollToId('events')}>Events</li>
         </ul>

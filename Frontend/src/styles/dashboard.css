@@ -9,12 +9,16 @@
   }
   
   .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-wrap: wrap;
     gap: 20px;
+    
   }
   
-  .card {
+  .cards-container .card {
     border-radius: 4px;
     padding: 20px;
     color: white;
@@ -22,11 +26,12 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 150px;
+  width: 300px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
   }
   
-  .card:hover {
+  .cards-container .card:hover {
     transform: translateY(-5px);
   }
   
