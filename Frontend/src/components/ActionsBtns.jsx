@@ -1,10 +1,11 @@
 import {
-  faBookmark,
   faCircleCheck,
-  faCross,
+  faCircleXmark,
   faEye,
   faPencil,
+  faRectangleXmark,
   faShuffle,
+  faSquareCheck,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -74,7 +75,7 @@ const ActionsBtns = ({
       )}
       {onReject && (
         <Button
-          icon={<FontAwesomeIcon icon={faCross} />}
+          icon={<FontAwesomeIcon icon={faCircleXmark} />}
           className="p-button p-button-danger mr-2"
           onClick={() => onReject && onReject(rowData)}
           tooltip="Rejected"
@@ -82,7 +83,7 @@ const ActionsBtns = ({
       )}
       {onBookmark && (
         <Button
-          icon={<FontAwesomeIcon icon={faBookmark} />}
+          icon={<FontAwesomeIcon icon={rowData.bookmark ? faSquareCheck : faRectangleXmark} />}
           className="p-button p-button-warning mr-2"
           onClick={() => onBookmark && onBookmark(rowData)}
           tooltip="Bookmark"

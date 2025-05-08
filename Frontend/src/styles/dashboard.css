@@ -68,4 +68,6 @@
     font-weight: bold;
     align-self: flex-end;
   }
-  
+  .bookmarked{
+    background-color: #a7ffd6 !important;
+  }
