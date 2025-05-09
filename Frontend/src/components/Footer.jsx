@@ -1,6 +1,7 @@
 // Footer.js
 import React from 'react';
 import '../styles/Footer.css';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   const scrollToId = (id) => {
     const section = document.getElementById(id);
@@ -22,7 +23,7 @@ const Footer = () => {
           <ul>
             <li onClick={() => scrollToId('about')}>About Us</li>
             <li onClick={() => scrollToId('events')}>Events</li>
-        
+            <li><Link to="/dashboard">Dashboard</Link></li>
           </ul>
         </div>
         <div className="footer-section">
