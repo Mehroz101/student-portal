@@ -5,7 +5,6 @@ import {
   faHourglassHalf,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import "../styles/dashboard.css"
 const stats = [
   {
     title: "Pending Requests",

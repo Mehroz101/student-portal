@@ -16,6 +16,8 @@ import { ErrorBoundary } from "react-error-boundary";
 import LandingPage from "./pages/LandingPage";
 import MainLayout from "./layout/MainLayout";
 import StudentCards from "./pages/Students";
+import "./styles/dashboard.css"
+
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
