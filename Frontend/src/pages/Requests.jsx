@@ -6,9 +6,10 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { Tag } from "primereact/tag";
 import ActionsBtns from "../components/ActionsBtns";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-
+import { notify } from "../utils/notification";
+  
 const sampleRequests = [
   {
     id: 1,
@@ -41,7 +42,7 @@ export default function StudentRequests() {
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
   const [globalFilterValue, setGlobalFilterValue] = useState("");
-  const { data, isLoading } = useQuery({
+  const { data, isLoading,refetch } = useQuery({
     queryKey: ["getalluserdetail"],
     queryFn: async () => {
       try {
@@ -53,6 +54,32 @@ export default function StudentRequests() {
         return response.data;
       } catch (error) {
         console.log(error.message);
+      }
+    },
+  });
+  const approvedMutation = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.post(
+          "http://localhost:5000/api/user/updateapprovalstatus",
+          data,
+          config
+        );
+        if (response.data.success === false) {
+          notify("error", response.data.message);
+        } else {
+          refetch();
+          notify("success", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
       }
     },
   });
@@ -71,19 +98,17 @@ export default function StudentRequests() {
     }
   };
 
-  const updateStatus = (id, newStatus) => {
-    const updated = requests.map((req) =>
-      req.id === id ? { ...req, status: newStatus } : req
-    );
-    setRequests(updated);
+
+  const updateStatus = (id, status) => {
+    approvedMutation.mutate({ id: id, isapproved: status });
   };
 
   const actionBodyTemplate = (rowData) => (
     <div className="flex gap-2">
       <ActionsBtns
         rowData={rowData}
-        onAccept={() => updateStatus(rowData.id, "approved")}
-        onReject={() => updateStatus(rowData.id, "rejected")}
+        onAccept={() => updateStatus(rowData._id, "approved")}
+        onReject={() => updateStatus(rowData._id, "rejected")}
       />
     </div>
   );
@@ -131,6 +156,7 @@ export default function StudentRequests() {
           filter
           filterPlaceholder="Search by name"
         />
+        <Column field="email" header="Email" />
         <Column
           field="department"
           header="Department"

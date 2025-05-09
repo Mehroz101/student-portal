@@ -83,7 +83,7 @@ const ActionsBtns = ({
       )}
       {onBookmark && (
         <Button
-          icon={<FontAwesomeIcon icon={rowData.bookmark ? faSquareCheck : faRectangleXmark} />}
+          icon={<FontAwesomeIcon icon={rowData.isshown ? faSquareCheck : faRectangleXmark} />}
           className="p-button p-button-warning mr-2"
           onClick={() => onBookmark && onBookmark(rowData)}
           tooltip="Bookmark"

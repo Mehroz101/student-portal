@@ -14,6 +14,20 @@ const GetAllUserDetail = async (req, res) => {
     console.log(error);
   }
 };
+const GetAllApprovedUserDetail = async (req, res) => {
+  try {
+    const user = await User.find({ status: "approved" });
+    if (user) {
+      res.status(200).send({ success: true, message: "", data: user });
+    
+    } else {
+      res.status(404).send({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+    console.log(error);
+  }
+};
 const GetUserDetail = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -78,17 +92,17 @@ const UpdateUserDetail = async (req, res) => {
 };
 const UpdateApprovalStatus = async (req, res) => {
   try {
-    const { userId, isapproved } = req.body;
-
+    const { id, isapproved } = req.body;
+    console.log(id, isapproved);
     const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { isapproved },
+      id,
+      { status: isapproved },
       { new: true }
     );
     if (updatedUser) {
       res.status(200).send({
         success: true,
-        message: `User ${isapproved ? "approved" : "rejected"} successfully`,
+        message: `User ${isapproved=="approved" ? "approved" : "rejected"} successfully`,
       });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
@@ -100,10 +114,11 @@ const UpdateApprovalStatus = async (req, res) => {
 };
 const UpdateShowStatus = async (req, res) => {
   try {
-    const { userId, isshown } = req.body;
+    const { id, isshown } = req.body;
+    console.log(id, isshown);
     const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { isshown },
+      id,
+      { isshown : isshown },
       { new: true }
     );
     if (updatedUser) {
@@ -125,4 +140,5 @@ module.exports = {
   GetUserDetail,
   UpdateUserDetail,
   UpdateApprovalStatus,
-  UpdateShowStatus, };
+  UpdateShowStatus,
+  GetAllApprovedUserDetail };

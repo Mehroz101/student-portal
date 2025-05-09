@@ -5,10 +5,10 @@ import { InputText } from "primereact/inputtext";
 import { Tag } from "primereact/tag";
 import { FilterMatchMode } from "primereact/api";
 import ActionsBtns from "../components/ActionsBtns";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { notify } from "../utils/notification";
 const sampleRequests = [
-
   {
     id: 1,
     name: "Sara Ahmed",
@@ -18,7 +18,7 @@ const sampleRequests = [
     rollNo: "BZU-2021-012",
     cgpa: 3.9,
     status: "approved",
-    bookmark: true
+    bookmark: true,
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const sampleRequests = [
     rollNo: "BZU-2021-012",
     cgpa: 3.9,
     status: "approved",
-    bookmark: false
+    bookmark: false,
   },
 ];
 // getalluserdetail
@@ -39,34 +39,62 @@ export default function Users() {
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
-const {data,isLoading} = useQuery({
-  queryKey: ["getalluserdetail"],
-  queryFn: async () => {
-    const response = await axios.get("http://localhost:5000/api/user/getalluserdetail");
-    return response.data;
-  }
-})
-  useEffect(() => {
-    setApprovedRequests(sampleRequests);
-  }, []);
 
-  const toggleBookmark = (id) => {
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["getalluserdetail"],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getallapproveduserdetail"
+        );
+        console.log(response.data.data);
+        setApprovedRequests(response.data.data);
+        return response.data;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+  });
+  const approvedMutation = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.post(
+          "http://localhost:5000/api/user/updateshowstatus",
+          data,
+          config
+        );
+        if (response.data.success === false) {
+          notify("error", response.data.message);
+        } else {
+          refetch();
+          notify("success", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
+      }
+    },
+  });
+
+
+  const toggleBookmark = (id, isShown) => {
     console.log(id);
-    setApprovedRequests(
-      approvedRequests.map((req) =>
-        req.id === id ? { ...req, bookmark: !req.bookmark } : req
-      )
-    );
-   
+    approvedMutation.mutate({ id: id, isshown: isShown });
   };
 
   const bookmarkTemplate = (rowData) => {
     return (
-     
-       <ActionsBtns
+      <ActionsBtns
         rowData={rowData}
         onBookmark={() => {
-          toggleBookmark(rowData.id)}}
+          toggleBookmark(rowData._id, !rowData.isshown);
+        }}
       />
     );
   };
@@ -106,21 +134,27 @@ const {data,isLoading} = useQuery({
         filterDisplay="menu"
         header={header}
         emptyMessage="No approved students found."
-        rowClassName={(rowData) =>
-          rowData.bookmark ? "bookmarked" : ""}
-          loading={isLoading}
+        rowClassName={(rowData) => (rowData.isshown ? "bookmarked" : "")}
+        loading={isLoading}
       >
-        <Column field="name" header="Name" />
-        <Column field="class" header="Class" />
+        <Column
+          field="name"
+          header="Name"
+          filter
+          filterPlaceholder="Search by name"
+        />
+        <Column field="email" header="Email" />
+        <Column
+          field="department"
+          header="Department"
+          filter
+          filterPlaceholder="Search by class"
+        />
         <Column field="session" header="Session" />
         <Column field="university" header="University" />
-        <Column field="rollNo" header="Roll No" />
+        <Column field="rollno" header="Roll No" />
         <Column field="cgpa" header="CGPA" />
-        <Column
-          field="status"
-          header="Status"
-          body={statusBodyTemplate}
-        />
+        <Column field="status" header="Status" body={statusBodyTemplate} />
         <Column
           header="Bookmark"
           body={bookmarkTemplate}

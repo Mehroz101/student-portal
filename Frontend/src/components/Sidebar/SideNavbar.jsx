@@ -1,7 +1,6 @@
 // src/components/CustomSidebar.js
 import React from "react";
 import { Sidebar } from "primereact/sidebar";
-import { Avatar } from "primereact/avatar";
 import { Link } from "react-router-dom";
 import "../../styles/CustomSidebar.css"; // Optional CSS for custom styles
 import { ROUTES } from "../../utils/routes";
@@ -14,7 +13,6 @@ const CustomSidebar = ({ visible, onHide }) => {
     onHide(); // Close the sidebar
   };
   const handleLogout = () => {
-    logout();
     localStorage.removeItem("token");
     navigate("/login");
   };

@@ -6,6 +6,7 @@ const { GetAllUserDetail,
     GetUserDetail,
     UpdateUserDetail,
     UpdateApprovalStatus,
+    GetAllApprovedUserDetail,
     UpdateShowStatus, } = require("../controllers/UserController");
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post("/updateuserdetail",UpdateUserDetail);
 router.get("/getalluserdetail",GetAllUserDetail);
 router.post("/updateapprovalstatus",authMiddleware,UpdateApprovalStatus);
 router.post("/updateshowstatus",authMiddleware,UpdateShowStatus);
+router.get("/getallapproveduserdetail",GetAllApprovedUserDetail);
 
 
 module.exports = router;

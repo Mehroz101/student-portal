@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/StudentCards.css";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const students = [
   {
@@ -126,10 +128,26 @@ const StudentCard = ({ student }) => {
 };
 
 const StudentCards = () => {
+  const [students, setStudents] = useState([]);
+  const { data, isLoading } = useQuery({
+    queryKey: ["allstudents"],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getalluserdetail"
+        );
+        console.log(response.data.data);
+        setStudents(response.data.data);
+        return response.data;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+  });
   return (
     <div className="cards-container">
-      {students.map((student) => (
-        <StudentCard key={student.id} student={student} />
+      {isLoading ? "Loading..." : students.map((student) => (
+        <StudentCard key={student._id} student={student} />
       ))}
     </div>
   );
