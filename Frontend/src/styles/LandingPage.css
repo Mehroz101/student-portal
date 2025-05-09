@@ -3,11 +3,11 @@
   background: url("../assets/bannerImg.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #fff;
-  max-height: 400px;
+  max-height: 450px;
 }
 .container .overlay {
   background-color: rgba(0, 0, 0, 0.5);
-  height: 400px;
+  height: 450px;
 }
 .header {
   padding: 50px 20px;
@@ -137,6 +137,7 @@
 .stats {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 40px 20px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -144,14 +145,9 @@
 
 .stat-item {
   text-align: center;
+  padding: 20px 70px;
 }
-.stat-item:not(:last-child) {
-  padding-right: 70px;
-  border-right: 2px solid #fff;
-}
-.stat-item:not(:first-child) {
-  padding-left: 70px;
-}
+
 
 .stat-icon {
   font-size: 2em;
@@ -194,13 +190,14 @@
 .feature-cards {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .feature-card {
   background: #f9f9f9;
   padding: 20px;
-  max-width: 400px;
+  max-width: 350px;
   text-align: center;
   text-align: left;
   border: 1px solid #ddd;
@@ -234,6 +231,7 @@
 .testimonial-cards {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 

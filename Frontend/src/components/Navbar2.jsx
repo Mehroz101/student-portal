@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '../styles/Navbar2.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars,  } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar2 = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -26,9 +28,10 @@ const Navbar2 = () => {
         </ul>
       </div>
       <div className="hamburger" onClick={() => setIsMobile(!isMobile)}>
+        {/* <span className="bar"></span>
         <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <span className="bar"></span> */}
+        <FontAwesomeIcon icon={faBars}/>
       </div>
     </nav>
   );
