@@ -25,7 +25,7 @@ const CustomSidebar = ({ visible, onHide }) => {
         </div>
         <ul className="sidebar-links">
           <li>
-            <Link to={"/"} className="sidebar-link" onClick={handleLinkClick}>
+            <Link to={"/dashboard"} className="sidebar-link" onClick={handleLinkClick}>
               <i className="pi pi-home"></i> Dashboard
             </Link>
           </li>

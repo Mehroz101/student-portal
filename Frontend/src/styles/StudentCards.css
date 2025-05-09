@@ -1,0 +1,54 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  .student-card {
+    width: 300px;
+    background-color: #f4f8ff;
+    border-left: 6px solid #ccc;
+    border-radius: 4px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .student-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .badge.pending {
+    background-color: #f0ad4e;
+  }
+  
+  .badge.approved {
+    background-color: #5cb85c;
+  }
+  
+  .badge.rejected {
+    background-color: #d9534f;
+  }
+  
+  p {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+  

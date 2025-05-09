@@ -15,6 +15,7 @@ import { ROUTES } from "./utils/routes";
 import { ErrorBoundary } from "react-error-boundary";
 import LandingPage from "./pages/LandingPage";
 import MainLayout from "./layout/MainLayout";
+import StudentCards from "./pages/Students";
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
@@ -63,12 +64,13 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
-    <Route path="/home" element={<MainLayout/>}>
+    <Route path="/" element={<MainLayout/>}>
       <Route index element={<LandingPage />} />
+      <Route path="students" element={<StudentCards />} />
     </Route>
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path={ROUTES.SIGNUP} element={<Signup />} />
-      <Route path="/" element={<ProtectedRoute element={<Layout />} />}>
+      <Route path="/dashboard" element={<ProtectedRoute element={<Layout />} />}>
         <Route index element={<Home />} />
         <Route path={ROUTES.USERS} element={<Users />} />
         <Route path={ROUTES.REQUESTS} element={<Requests />} />
