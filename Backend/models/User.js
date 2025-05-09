@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
     },
@@ -9,26 +9,36 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    role: {
+    email: {
       type: String,
       required: true,
     },
-    gender: {
+    university: {
       type: String,
+      required: true,
     },
     rollno: {
       type: String,
+      required: true,
     },
-    classID: {
+    session: {
       type: Number,
+      required: true,
     },
-    className: {
+    department: {
       type: String,
+      required: true,
     },
-    university: {
+    cgpa: {
       type: String,
+      required: true,
     },
-    isAdmin: {
+  
+    status: {
+      type: String,
+      default: "pending",
+    },
+    isshown: {
       type: Boolean,
       default: false,
     },

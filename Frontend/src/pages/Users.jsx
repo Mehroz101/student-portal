@@ -5,7 +5,8 @@ import { InputText } from "primereact/inputtext";
 import { Tag } from "primereact/tag";
 import { FilterMatchMode } from "primereact/api";
 import ActionsBtns from "../components/ActionsBtns";
-
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 const sampleRequests = [
 
   {
@@ -31,14 +32,20 @@ const sampleRequests = [
     bookmark: false
   },
 ];
-
+// getalluserdetail
 export default function Users() {
   const [approvedRequests, setApprovedRequests] = useState([]);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
-
+const {data,isLoading} = useQuery({
+  queryKey: ["getalluserdetail"],
+  queryFn: async () => {
+    const response = await axios.get("http://localhost:5000/api/user/getalluserdetail");
+    return response.data;
+  }
+})
   useEffect(() => {
     setApprovedRequests(sampleRequests);
   }, []);
@@ -101,7 +108,7 @@ export default function Users() {
         emptyMessage="No approved students found."
         rowClassName={(rowData) =>
           rowData.bookmark ? "bookmarked" : ""}
-
+          loading={isLoading}
       >
         <Column field="name" header="Name" />
         <Column field="class" header="Class" />

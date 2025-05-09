@@ -5,8 +5,9 @@ import { Column } from "primereact/column";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { Tag } from "primereact/tag";
-import { Button } from "primereact/button";
 import ActionsBtns from "../components/ActionsBtns";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const sampleRequests = [
   {
@@ -40,10 +41,24 @@ export default function StudentRequests() {
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
   const [globalFilterValue, setGlobalFilterValue] = useState("");
-
+  const { data, isLoading } = useQuery({
+    queryKey: ["getalluserdetail"],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getalluserdetail"
+        );
+        console.log(response.data.data);
+        setRequests(response.data.data);
+        return response.data;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+  });
   useEffect(() => {
-    setRequests(sampleRequests);
-  }, []);
+    console.log(requests);
+  }, [requests]);
 
   const getSeverity = (status) => {
     switch (status) {
@@ -108,6 +123,7 @@ export default function StudentRequests() {
         globalFilterFields={["name", "class", "university", "rollNo"]}
         header={header}
         emptyMessage="No requests found."
+        loading={isLoading}
       >
         <Column
           field="name"
@@ -116,14 +132,14 @@ export default function StudentRequests() {
           filterPlaceholder="Search by name"
         />
         <Column
-          field="class"
-          header="Class"
+          field="department"
+          header="Department"
           filter
           filterPlaceholder="Search by class"
         />
         <Column field="session" header="Session" />
         <Column field="university" header="University" />
-        <Column field="rollNo" header="Roll No" />
+        <Column field="rollno" header="Roll No" />
         <Column field="cgpa" header="CGPA" />
         <Column
           field="status"

@@ -2,12 +2,38 @@ import React from "react";
 import "../styles/Auth.css";
 import CustomTextInput from "../components/FormComponents/CustomTextInput";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+import { notify } from "../utils/notification";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const method = useForm();
-  const onsubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+  const signupMutation = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const response = await axios.post("http://localhost:5000/api/auth/signin", data);
+        if(response.data.success === false){
+          notify("error", response.data.message);
+        }
+        else{
+          notify("success", response.data.message);
+          localStorage.setItem("token", response.data.token);
+          navigate("/dashboard");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
+      }
+    },
+  });
+
+  const onsubmit = (data) =>{
+    signupMutation.mutate(data);
+  }
   return (
     <div>
-      <div class="container">
+      <div class="login-container">
         <div class="screen">
           <div class="screen__content">
             <form class="auth" onSubmit={method.handleSubmit(onsubmit)}>

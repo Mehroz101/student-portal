@@ -15,6 +15,7 @@ const CustomSidebar = ({ visible, onHide }) => {
   };
   const handleLogout = () => {
     logout();
+    localStorage.removeItem("token");
     navigate("/login");
   };
   return (
@@ -57,16 +58,14 @@ const CustomSidebar = ({ visible, onHide }) => {
 
       <div className=" absolute bottom-0">
         <hr className="mb-3 mx-3 border-top-1 border-none surface-border" />
-        <a
+        <Link
+          to={"/dashboard"}
           v-ripple
           className="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
         >
-          <Avatar
-            image="https://avatars.githubusercontent.com/u/85057779?v=4"
-            shape="circle"
-          />
-          <span className="font-bold">Mehroz Farooq</span>
-        </a>
+        
+          <span className="font-bold">Alumni Hub</span>
+        </Link>
       </div>
     </Sidebar>
   );
