@@ -5,4 +5,5 @@ export const ROUTES = {
   USERS: "users",
   REQUESTS: "requests",
   SETTING: "setting",
+  EVENTS: "events",
 };

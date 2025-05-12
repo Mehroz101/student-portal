@@ -47,6 +47,15 @@ const CustomSidebar = ({ visible, onHide }) => {
             </Link>
           </li>
           <li>
+            <Link
+              to={ROUTES.EVENTS}
+              className="sidebar-link"
+              onClick={handleLinkClick}
+            >
+              <i className="pi pi-users"></i> Events
+            </Link>
+          </li>
+          <li>
             <Link to={"/"} className="sidebar-link" onClick={handleLogout}>
               <i className="pi pi-users"></i> Logout
             </Link>

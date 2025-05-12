@@ -8,3 +8,4 @@ export const Setting = lazy(() => import("../pages/Setting"));
 export const Home = lazy(() => import("../pages/Home"));
 export const ProtectedRoute = lazy(() => import("../context/ProtectedRoutes"));
 export const Layout = lazy(() => import("../layout/Layout"));
+export const Events = lazy(()=>import("../pages/Events"))

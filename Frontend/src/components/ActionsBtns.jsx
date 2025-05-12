@@ -32,6 +32,7 @@ const ActionsBtns = ({
           icon={<FontAwesomeIcon icon={faPencil} />}
           className="p-button p-button-success mr-2"
           tooltip="edit"
+        
           onClick={() => {
             if (onEdit) {
               onEdit(rowData);

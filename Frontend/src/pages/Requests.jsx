@@ -38,7 +38,8 @@ export default function StudentRequests() {
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-    class: { value: null, matchMode: FilterMatchMode.EQUALS },
+    session: { value: null, matchMode: FilterMatchMode.EQUALS },
+    department: { value: null, matchMode: FilterMatchMode.EQUALS },
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
   const [globalFilterValue, setGlobalFilterValue] = useState("");
@@ -175,7 +176,7 @@ export default function StudentRequests() {
         dataKey="id"
         filters={filters}
         filterDisplay="row"
-        globalFilterFields={["name", "class", "university", "rollNo"]}
+        globalFilterFields={["name", "session","department", "university", "rollno"]}
         header={header}
         emptyMessage="No requests found."
         loading={isLoading}

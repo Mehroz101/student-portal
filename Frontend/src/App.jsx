@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
+  Events,
   Home,
   Layout,
   Login,
@@ -77,6 +78,7 @@ function AppRoutes() {
         <Route path={ROUTES.USERS} element={<Users />} />
         <Route path={ROUTES.REQUESTS} element={<Requests />} />
         <Route path={ROUTES.SETTING} element={<Setting />} />
+        <Route path={ROUTES.EVENTS} element={<Events />} />
       </Route>
     </Routes>
   );
