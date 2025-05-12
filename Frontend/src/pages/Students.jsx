@@ -119,7 +119,7 @@ const StudentCard = ({ student }) => {
       </div>
       <p><strong>Email:</strong> {student.email}</p>
       <p><strong>University:</strong> {student.university}</p>
-      <p><strong>Roll No:</strong> {student.rollNo}</p>
+      <p><strong>Roll No:</strong> {student.rollno}</p>
       <p><strong>Session:</strong> {student.session}</p>
       <p><strong>Department:</strong> {student.department}</p>
       <p><strong>CGPA:</strong> {student.cgpa}</p>
@@ -134,7 +134,7 @@ const StudentCards = () => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getalluserdetail"
+          "http://localhost:5000/api/user/getallshownuserdetail"
         );
         console.log(response.data.data);
         setStudents(response.data.data);

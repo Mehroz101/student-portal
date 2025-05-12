@@ -5,7 +5,33 @@ const GetAllUserDetail = async (req, res) => {
     const user = await User.find();
     if (user) {
       res.status(200).send({ success: true, message: "", data: user });
-    
+    } else {
+      res.status(404).send({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+    console.log(error);
+  }
+};
+const GetAllShownUserDetail = async (req, res) => {
+  try {
+    const user = await User.find({ isshown: true });
+    if (user) {
+      res.status(200).send({ success: true, message: "", data: user });
+    } else {
+      res.status(404).send({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+    console.log(error);
+  }
+};
+const DeleteUserDetail = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const user = await User.findByIdAndDelete(id);
+    if (user) {
+      res.status(200).send({ success: true, message: "user deleted successfully", data: user });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
     }
@@ -19,7 +45,6 @@ const GetAllApprovedUserDetail = async (req, res) => {
     const user = await User.find({ status: "approved" });
     if (user) {
       res.status(200).send({ success: true, message: "", data: user });
-    
     } else {
       res.status(404).send({ success: false, message: "User not found" });
     }
@@ -62,9 +87,9 @@ const UpdateUserDetail = async (req, res) => {
       department,
       university,
       cgpa,
-      session
+      session,
     } = req.body;
-    const user = new User( {
+    const user = new User({
       name: name,
       rollno: rollno,
       email: email,
@@ -74,7 +99,7 @@ const UpdateUserDetail = async (req, res) => {
       cgpa: cgpa,
       session: session,
     });
-   const result = await user.save();
+    const result = await user.save();
     if (result) {
       res
         .status(201)
@@ -102,7 +127,9 @@ const UpdateApprovalStatus = async (req, res) => {
     if (updatedUser) {
       res.status(200).send({
         success: true,
-        message: `User ${isapproved=="approved" ? "approved" : "rejected"} successfully`,
+        message: `User ${
+          isapproved == "approved" ? "approved" : "rejected"
+        } successfully`,
       });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
@@ -118,7 +145,7 @@ const UpdateShowStatus = async (req, res) => {
     console.log(id, isshown);
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { isshown : isshown },
+      { isshown: isshown },
       { new: true }
     );
     if (updatedUser) {
@@ -135,10 +162,13 @@ const UpdateShowStatus = async (req, res) => {
   }
 };
 
-module.exports = {  
+module.exports = {
   GetAllUserDetail,
   GetUserDetail,
   UpdateUserDetail,
   UpdateApprovalStatus,
   UpdateShowStatus,
-  GetAllApprovedUserDetail };
+  GetAllApprovedUserDetail,
+  GetAllShownUserDetail,
+  DeleteUserDetail,
+};

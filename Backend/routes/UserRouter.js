@@ -7,7 +7,9 @@ const { GetAllUserDetail,
     UpdateUserDetail,
     UpdateApprovalStatus,
     GetAllApprovedUserDetail,
-    UpdateShowStatus, } = require("../controllers/UserController");
+    UpdateShowStatus,
+    GetAllShownUserDetail,
+    DeleteUserDetail, } = require("../controllers/UserController");
 const router = express.Router();
 
 router.get("/getuserdetail",GetUserDetail);
@@ -16,6 +18,8 @@ router.get("/getalluserdetail",GetAllUserDetail);
 router.post("/updateapprovalstatus",authMiddleware,UpdateApprovalStatus);
 router.post("/updateshowstatus",authMiddleware,UpdateShowStatus);
 router.get("/getallapproveduserdetail",GetAllApprovedUserDetail);
+router.get("/getallshownuserdetail",GetAllShownUserDetail);
+router.post("/deleteuserdetail",authMiddleware,DeleteUserDetail);
 
 
 module.exports = router;

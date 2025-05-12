@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-
+import {notify} from "../utils/notification";
 const PopupForm = ({ isOpen, onClose }) => {
   const { register, handleSubmit } = useForm();
 
@@ -11,14 +11,27 @@ const PopupForm = ({ isOpen, onClose }) => {
       try {
         const response = await axios.post("http://localhost:5000/api/user/updateuserdetail", data);
         console.log("Success:", response.data);
+        if(response.data.success){
+          onClose();
+          notify("success", "Form submitted successfully");
+        }
+        else{
+          notify("error", "Something went wrong");
+          
+
+        }
       } catch (error) {
-        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
+
       }
     },
   });
 
   const submitHandler = (data) => {
     console.log("Form Data:", data);
+    if(data.name == '' || data.email== '' || data.password== '' || data.university== '' || data.rollno== '' || data.session== '' || data.department== ''){
+      return notify("warning", "Please fill all the fields");
+    }
     formMutation.mutate(data);
   };
 

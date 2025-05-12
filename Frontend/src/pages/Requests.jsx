@@ -83,6 +83,32 @@ export default function StudentRequests() {
       }
     },
   });
+  const deleteMutation = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.post(
+          "http://localhost:5000/api/user/deleteuserdetail",
+          data,
+          config
+        );
+        if (response.data.success === false) {
+          notify("error", response.data.message);
+        } else {
+          refetch();
+          notify("success", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
+      }
+    },
+  });
   useEffect(() => {
     console.log(requests);
   }, [requests]);
@@ -102,6 +128,9 @@ export default function StudentRequests() {
   const updateStatus = (id, status) => {
     approvedMutation.mutate({ id: id, isapproved: status });
   };
+  const DeleteStatus = (id, status) => {
+    deleteMutation.mutate({ id: id });
+  };
 
   const actionBodyTemplate = (rowData) => (
     <div className="flex gap-2">
@@ -109,6 +138,7 @@ export default function StudentRequests() {
         rowData={rowData}
         onAccept={() => updateStatus(rowData._id, "approved")}
         onReject={() => updateStatus(rowData._id, "rejected")}
+        onDelete={() => DeleteStatus(rowData._id)}
       />
     </div>
   );
