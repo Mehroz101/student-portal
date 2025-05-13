@@ -24,7 +24,7 @@ const Navbar2 = () => {
         <li onClick={() => navigate("/")}>Home</li>
         <li onClick={() => navigate("/students")}>Students</li>
         <li onClick={() => scrollToId('about')}>About</li>
-        <li onClick={() => scrollToId('events')}>Events</li>
+        <li onClick={() => navigate("/events")}>Events</li>
         </ul>
       </div>
       <div className="hamburger" onClick={() => setIsMobile(!isMobile)}>

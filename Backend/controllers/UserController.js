@@ -1,5 +1,6 @@
+const Event = require("../models/Event");
 const User = require("../models/User");
-
+const fs = require("fs");
 const GetAllUserDetail = async (req, res) => {
   try {
     const user = await User.find();
@@ -161,7 +162,70 @@ const UpdateShowStatus = async (req, res) => {
     res.status(500).send({ success: false, message: error.message });
   }
 };
+const AddOrUpdateEvent = async (req, res) => {
+  try {
+      const {name,description,status,id=null} = req.body;
+      const file = req.file;
+      if(id){
+          const updatedUser = await Event.findByIdAndUpdate(
+              id,
+              { name: name,description:description,status:status,image:file.filename },
+              { new: true }
+          );
+          if (updatedUser) {
+              res.status(200).send({
+                  success: true,
+                  message: `Event updated successfully`,
+              });
+          } else {
+              res.status(404).send({ success: false, message: "Event not found" });
+          }
+      }
+      else{
+          const user = new Event({
+              name: name,
+              description:description,
+              status:status,
+              image:file.filename
+          });
+          const result = await user.save();
+          if (result) {
+              res.status(201).send({ success: true, message: "Event added successfully" });
+          } else {
+            //remove image
+            fs.unlinkSync(`./uploads/${file.filename}`);
 
+              res.status(401).send({ success: true, message: "something wrong while adding event" });
+          }
+      }
+
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+  }
+}
+const getAllEvents = async (req, res) => {
+  try {
+    const events = await Event.find();
+    res.status(200).send({ success: true, message: "", data: events });
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+  }
+}
+const deleteEvent = async (req, res) => {
+  try {
+    const { eventId } = req.body;
+    console.log(eventId);
+    const event = await Event.findByIdAndDelete(eventId);
+    if (event) {
+      res.status(200).send({ success: true, message: "event deleted successfully", data: event });
+    } else {
+      res.status(404).send({ success: false, message: "Event not found" });
+    }
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+    console.log(error);
+  }
+}
 module.exports = {
   GetAllUserDetail,
   GetUserDetail,
@@ -171,4 +235,7 @@ module.exports = {
   GetAllApprovedUserDetail,
   GetAllShownUserDetail,
   DeleteUserDetail,
+  AddOrUpdateEvent,
+  getAllEvents,
+  deleteEvent
 };
