@@ -95,7 +95,7 @@ const LandingPage = () => {
             </div>
         </div>
         <section className="features" id="events">
-            <h2>Upcoming Events</h2>
+            <h2>Features</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod, saepe reprehenderit totam aliquam architecto fugit sunt animi!</p>
             <div className="feature-cards">
               <div className="feature-card">
