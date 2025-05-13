@@ -12,6 +12,7 @@ const {
   DeleteUserDetail,
   getAllEvents,
   deleteEvent,
+  AllStates,
 } = require("../controllers/UserController");
 const upload = require("../middleware/uploadImage");
 const router = express.Router();
@@ -26,6 +27,7 @@ router.get("/getallshownuserdetail", GetAllShownUserDetail);
 router.post("/deleteuserdetail", authMiddleware, DeleteUserDetail);
 router.post("/addevent", authMiddleware, upload.single("image"), AddOrUpdateEvent);
 router.get("/allevent", getAllEvents);
-router.post("/deleteevent", deleteEvent);
+router.post("/deleteevent",authMiddleware, deleteEvent);
+router.get("/allstates", authMiddleware,AllStates);
 
 module.exports = router;

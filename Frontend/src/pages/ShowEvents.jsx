@@ -7,8 +7,14 @@ const ShowEvents = () => {
         queryKey: ["allevents"],
         queryFn: async () => {
           try {
+            const token = localStorage.getItem("token");
+            const config = {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
             const response = await axios.get(
-              "http://localhost:5000/api/user/allevent"
+              "http://localhost:5000/api/user/allevent",config
             );
             console.log(response.data.data);
             return response.data;

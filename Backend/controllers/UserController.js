@@ -226,6 +226,26 @@ const deleteEvent = async (req, res) => {
     console.log(error);
   }
 }
+const AllStates = async (req, res) => {
+  try {
+  
+    const [approved, pending, rejected, event] =await Promise.all([
+      User.find({ status: "approved" }),
+      User.find({ status: "pending" }),
+      User.find({ status: "rejected" }),
+      Event.find()
+    ])
+    const totalEvents = event.length;
+    const totalApproved = approved.length;
+    const totalPending = pending.length;
+    const totalRejected = rejected.length;
+    res.status(200).send({ success: true, message: "", data: { totalEvents, totalApproved, totalPending, totalRejected } });
+
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+    console.log(error);
+  }
+}
 module.exports = {
   GetAllUserDetail,
   GetUserDetail,
@@ -237,5 +257,6 @@ module.exports = {
   DeleteUserDetail,
   AddOrUpdateEvent,
   getAllEvents,
-  deleteEvent
+  deleteEvent,
+  AllStates
 };
