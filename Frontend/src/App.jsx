@@ -19,6 +19,7 @@ import MainLayout from "./layout/MainLayout";
 import StudentCards from "./pages/Students";
 import "./styles/dashboard.css"
 import ShowEvents from "./pages/ShowEvents";
+import UserLogin from "./pages/UserLogin";
 
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
@@ -68,6 +69,7 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
+      <Route path="/userlogin" element={<UserLogin/>}  />
     <Route path="/" element={<MainLayout/>}>
       <Route index element={<LandingPage />} />
       <Route path="students" element={<StudentCards />} />

@@ -1,37 +1,47 @@
 // Navbar.js
-import React, { useState } from 'react';
-import '../styles/Navbar2.css';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars,  } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from "react";
+import "../styles/Navbar2.css";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar2 = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const navigate = useNavigate()
+  const [usertoken, setUsertoken] = useState();
+  const navigate = useNavigate();
   const scrollToId = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  useEffect(() => {
+    const data = localStorage.getItem("usertoken");
+    if (data) {
+      setUsertoken(data);
+    }
+  }, [navigate]);
   return (
     <nav className="navbar2">
       <div className="navbar-brand">
-        <a href="/" className="brand-logo">Alumni Hub</a>
+        <a href="/" className="brand-logo">
+          Alumni Hub
+        </a>
       </div>
-      <div className={`navbar-links ${isMobile ? 'mobile' : ''}`}>
-        <ul>
-        <li onClick={() => navigate("/")}>Home</li>
-        <li onClick={() => navigate("/students")}>Students</li>
-        <li onClick={() => scrollToId('about')}>About</li>
-        <li onClick={() => navigate("/events")}>Events</li>
+      <div className={`navbar-links ${isMobile ? "mobile" : ""}`}>
+        <ul className="align-items-center">
+          <li onClick={() => navigate("/")}>Home</li>
+          <li onClick={() => navigate("/students")}>Students</li>
+          <li onClick={() => scrollToId("about")}>About</li>
+          <li onClick={() => navigate("/events")}>Events</li>
+          {usertoken && <li onClick={() => navigate("/profile")} className="border bg-blue-600 py-2 px-4 border-round">profile</li>}
         </ul>
       </div>
       <div className="hamburger" onClick={() => setIsMobile(!isMobile)}>
         {/* <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span> */}
-        <FontAwesomeIcon icon={faBars}/>
+        <FontAwesomeIcon icon={faBars} />
       </div>
     </nav>
   );
