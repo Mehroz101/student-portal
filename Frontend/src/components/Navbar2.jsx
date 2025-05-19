@@ -34,7 +34,21 @@ const Navbar2 = () => {
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => scrollToId("about")}>About</li>
           <li onClick={() => navigate("/events")}>Events</li>
-          {usertoken && <li onClick={() => navigate("/profile")} className="border bg-blue-600 py-2 px-4 border-round">profile</li>}
+          {usertoken ? (
+            <li
+              onClick={() => navigate("/profile")}
+              className="border bg-blue-600 py-2 px-4 border-round"
+            >
+              profile
+            </li>
+          ) : (
+            <li
+              onClick={() => navigate("/userlogin")}
+              className="border bg-blue-600 py-2 px-4 border-round"
+            >
+              Login
+            </li>
+          )}
         </ul>
       </div>
       <div className="hamburger" onClick={() => setIsMobile(!isMobile)}>

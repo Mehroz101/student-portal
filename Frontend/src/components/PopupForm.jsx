@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import {notify} from "../utils/notification";
-const PopupForm = ({ isOpen, onClose }) => {
+const PopupForm = () => {
   const { register, handleSubmit } = useForm();
 
   const formMutation = useMutation({
@@ -12,7 +12,6 @@ const PopupForm = ({ isOpen, onClose }) => {
         const response = await axios.post("http://localhost:5000/api/user/updateuserdetail", data);
         console.log("Success:", response.data);
         if(response.data.success){
-          onClose();
           notify("success", "Form submitted successfully");
         }
         else{
@@ -35,12 +34,10 @@ const PopupForm = ({ isOpen, onClose }) => {
     formMutation.mutate(data);
   };
 
-  if (!isOpen) return null;
 
   return (
     <div className="popup-overlay">
       <div className="popup-content">
-        <button className="close-btn" onClick={onClose}>✖</button>
         <h2>Add Details</h2>
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="form-group">

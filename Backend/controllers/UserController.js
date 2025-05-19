@@ -96,7 +96,7 @@ const UpdateUserDetail = async (req, res) => {
       cgpa,
       session,
     } = req.body;
-    const user = new User({
+    const user = new UserData({
       name: name,
       rollno: rollno,
       email: email,

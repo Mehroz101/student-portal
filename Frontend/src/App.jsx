@@ -17,9 +17,11 @@ import { ErrorBoundary } from "react-error-boundary";
 import LandingPage from "./pages/LandingPage";
 import MainLayout from "./layout/MainLayout";
 import StudentCards from "./pages/Students";
-import "./styles/dashboard.css"
+import "./styles/dashboard.css";
 import ShowEvents from "./pages/ShowEvents";
 import UserLogin from "./pages/UserLogin";
+import Profile from "./pages/Profile";
+import ProtectedUserRoute from "./context/ProtectedUserRoutes";
 
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
@@ -69,15 +71,21 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/userlogin" element={<UserLogin/>}  />
-    <Route path="/" element={<MainLayout/>}>
-      <Route index element={<LandingPage />} />
-      <Route path="students" element={<StudentCards />} />
-      <Route path="events" element={<ShowEvents />} />
-    </Route>
+      <Route path="/userlogin" element={<UserLogin />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<LandingPage />} />
+        <Route path="students" element={<StudentCards />} />
+        <Route path="events" element={<ShowEvents />} />
+        <Route>
+          <Route path="/profile" element={<ProtectedUserRoute element={<Profile />} />} />
+        </Route>
+      </Route>
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path={ROUTES.SIGNUP} element={<Signup />} />
-      <Route path="/dashboard" element={<ProtectedRoute element={<Layout />} />}>
+      <Route
+        path="/dashboard"
+        element={<ProtectedRoute element={<Layout />} />}
+      >
         <Route index element={<Home />} />
         <Route path={ROUTES.USERS} element={<Users />} />
         <Route path={ROUTES.REQUESTS} element={<Requests />} />

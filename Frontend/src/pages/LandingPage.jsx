@@ -4,9 +4,10 @@ import std1 from "../assets/std1.jpg";
 import std2 from "../assets/std2.jpg";
 import aboutImg from "../assets/about.png";
 import PopupForm from "../components/PopupForm";
+import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+const navigate = useNavigate();
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false)
   return (
@@ -22,7 +23,7 @@ const LandingPage = () => {
                 amet error eius reiciendis eum sint unde eveniet deserunt est
                 debitis corporis temporibus recusandae accusamus.
               </p>
-              <button className="read-more" onClick={openPopup}>Register</button>
+              <button className="read-more" onClick={() => navigate("/userlogin")}>Register</button>
             </div>
           </header>
         </div>
