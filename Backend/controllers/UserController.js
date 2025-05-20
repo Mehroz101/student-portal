@@ -1,6 +1,7 @@
 const Event = require("../models/Event");
 const UserData = require("../models/UserData");
 const fs = require("fs");
+const path = require("path");
 const GetAllUserDetail = async (req, res) => {
   try {
     const user = await UserData.find();
@@ -32,13 +33,11 @@ const DeleteUserDetail = async (req, res) => {
     const { id } = req.body;
     const user = await UserData.findByIdAndDelete(id);
     if (user) {
-      res
-        .status(200)
-        .send({
-          success: true,
-          message: "user deleted successfully",
-          data: user,
-        });
+      res.status(200).send({
+        success: true,
+        message: "user deleted successfully",
+        data: user,
+      });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
     }
@@ -66,13 +65,15 @@ const GetUserDetail = async (req, res) => {
     const user = await UserData.findById(userId);
     if (user) {
       const sendData = {
-        userName: user.username,
-        rollNo: user.rollno ?? "",
+        name: user.name,
+        fatherName: user.fatherName,
+        rollno: user.rollno,
         gender: user.gender,
-        university: user.university ?? "",
-        className: user.className ?? "",
-        classID: user.classID ?? "",
-        password: user.password ?? "",
+        DOB: user.DOB,
+        phoneNumber: user.phoneNumber,
+        passingYear: user.passingYear,
+        cnic: user.cnic,
+        img: user.img,
       };
       res.status(200).send({ success: true, message: "", data: sendData });
     } else {
@@ -88,35 +89,68 @@ const UpdateUserDetail = async (req, res) => {
     console.log(req.body);
     const {
       name,
+      fatherName,
       rollno,
-      email,
-      password,
-      department,
-      university,
-      cgpa,
-      session,
+      gender,
+      DOB,
+      phoneNumber,
+      passingYear,
+      cnic,
     } = req.body;
-    const user = new UserData({
-      name: name,
-      rollno: rollno,
-      email: email,
-      password: password,
-      department: department,
-      university: university,
-      cgpa: cgpa,
-      session: session,
-    });
-    const result = await user.save();
-    if (result) {
-      res
-        .status(201)
-        .send({ success: true, message: "update detail successfully" });
-    } else {
-      res.status(401).send({
-        success: true,
-        message: "something wrong while updating detail",
+    const userId = req.user.id;
+    const existingUser = await UserData.findById(userId);
+    if (existingUser && existingUser.img && req.file) {
+      const oldImagePath = path.join(__dirname, "../uploads", existingUser.img);
+      fs.unlink(oldImagePath, (err) => {
+        if (err) {
+          console.error("Failed to delete old image:", err.message);
+        } else {
+          console.log("Old image deleted:", existingUser.img);
+        }
       });
     }
+    let user;
+    if (existingUser) {
+      user = await UserData.findByIdAndUpdate(
+        userId,
+        {
+          name,
+          fatherName,
+          rollno,
+          gender,
+          DOB,
+          phoneNumber,
+          passingYear,
+          cnic,
+          img: req.file.filename || existingUser.img,
+        },
+        { new: true }
+      );
+    } else {
+      user = await UserData.create({
+        _id: userId, // optional: include this if you want to preserve the given ID
+        name,
+        fatherName,
+        rollno,
+        gender,
+        DOB,
+        phoneNumber,
+        passingYear,
+        cnic,
+        img: req.file.filename,
+      });
+    }
+
+    if (!user) {
+      return res
+        .status(404)
+        .send({ success: false, message: "User not found" });
+    }
+    res.status(200).send({
+      success: true,
+      message: "User updated successfully",
+      data: user,
+    });
   } catch (error) {
     res.status(500).send({ success: false, message: error.message });
     console.log(error.message);
@@ -207,12 +241,10 @@ const AddOrUpdateEvent = async (req, res) => {
         //remove image
         fs.unlinkSync(`./uploads/${file.filename}`);
 
-        res
-          .status(401)
-          .send({
-            success: true,
-            message: "something wrong while adding event",
-          });
+        res.status(401).send({
+          success: true,
+          message: "something wrong while adding event",
+        });
       }
     }
   } catch (error) {
@@ -233,13 +265,11 @@ const deleteEvent = async (req, res) => {
     console.log(eventId);
     const event = await Event.findByIdAndDelete(eventId);
     if (event) {
-      res
-        .status(200)
-        .send({
-          success: true,
-          message: "event deleted successfully",
-          data: event,
-        });
+      res.status(200).send({
+        success: true,
+        message: "event deleted successfully",
+        data: event,
+      });
     } else {
       res.status(404).send({ success: false, message: "Event not found" });
     }
@@ -260,13 +290,11 @@ const AllStates = async (req, res) => {
     const totalApproved = approved.length;
     const totalPending = pending.length;
     const totalRejected = rejected.length;
-    res
-      .status(200)
-      .send({
-        success: true,
-        message: "",
-        data: { totalEvents, totalApproved, totalPending, totalRejected },
-      });
+    res.status(200).send({
+      success: true,
+      message: "",
+      data: { totalEvents, totalApproved, totalPending, totalRejected },
+    });
   } catch (error) {
     res.status(500).send({ success: false, message: error.message });
     console.log(error);

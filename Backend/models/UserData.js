@@ -5,15 +5,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    password: {
+    fatherName: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-    },
-    university: {
+    gender: {
       type: String,
       required: true,
     },
@@ -21,19 +17,26 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    session: {
+    DOB: {
       type: String,
       required: true,
     },
-    department: {
+    phoneNumber: {
       type: String,
       required: true,
     },
-    cgpa: {
+    passingYear: {
       type: String,
       required: true,
     },
-  
+    cnic: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
       default: "pending",

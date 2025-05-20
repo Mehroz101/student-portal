@@ -17,8 +17,8 @@ const {
 const upload = require("../middleware/uploadImage");
 const router = express.Router();
 
-router.get("/getuserdetail", GetUserDetail);
-router.post("/updateuserdetail", UpdateUserDetail);
+router.get("/getuserdetail",authMiddleware, GetUserDetail);
+router.post("/updateuserdetail", authMiddleware, upload.single("image"), UpdateUserDetail);
 router.get("/getalluserdetail", GetAllUserDetail);
 router.post("/updateapprovalstatus", authMiddleware, UpdateApprovalStatus);
 router.post("/updateshowstatus", authMiddleware, UpdateShowStatus);
