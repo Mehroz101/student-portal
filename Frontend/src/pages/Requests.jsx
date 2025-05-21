@@ -38,9 +38,6 @@ export default function StudentRequests() {
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-    session: { value: null, matchMode: FilterMatchMode.EQUALS },
-    department: { value: null, matchMode: FilterMatchMode.EQUALS },
-    status: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const { data, isLoading,refetch } = useQuery({
@@ -182,22 +179,32 @@ export default function StudentRequests() {
         loading={isLoading}
       >
         <Column
+          header="Img"
+          body={(rowData) => (
+            <img
+              src={`http://localhost:5000/${rowData.img}`}
+              alt={rowData.name}
+              className="user-image"
+              width={50}
+              height={50}
+            />
+          )}
+        />
+        <Column
           field="name"
           header="Name"
           filter
           filterPlaceholder="Search by name"
         />
-        <Column field="email" header="Email" />
         <Column
-          field="department"
-          header="Department"
-          filter
-          filterPlaceholder="Search by class"
+          field="fatherName"
+          header="Father Name"
         />
-        <Column field="session" header="Session" />
-        <Column field="university" header="University" />
+        <Column field="cnic" header="CNIC"  />
+        <Column field="DOB" header="DOB" />
         <Column field="rollno" header="Roll No" />
-        <Column field="cgpa" header="CGPA" />
+        <Column field="passingYear" header="Passing Year" />
+        <Column field="gender" header="Gender" />
         <Column
           field="status"
           header="Status"

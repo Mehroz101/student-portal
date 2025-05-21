@@ -113,16 +113,26 @@ const StatusBadge = ({ status }) => {
 const StudentCard = ({ student }) => {
   return (
     <div className="student-card">
+      <div className="userImg">
+        <img
+          src={`http://localhost:5000/${student.img}`}
+          alt={student.name}
+          className="user-image"
+          width={100}
+          height={100}
+/>
+      </div>
       <div className="card-header">
         <h3>{student.name}</h3>
         <StatusBadge status={student.status} />
       </div>
-      <p><strong>Email:</strong> {student.email}</p>
-      <p><strong>University:</strong> {student.university}</p>
+      <p><strong>Father Name:</strong> {student.fatherName}</p>
+      <p><strong>CNIC:</strong> {student.cnic}</p>
       <p><strong>Roll No:</strong> {student.rollno}</p>
-      <p><strong>Session:</strong> {student.session}</p>
-      <p><strong>Department:</strong> {student.department}</p>
-      <p><strong>CGPA:</strong> {student.cgpa}</p>
+      <p><strong>DOB:</strong> {student.DOB}</p>
+      <p><strong>Gender:</strong> {student.gender}</p>
+      <p><strong>Phone No:</strong> {student.phoneNumber}</p>
+      <p><strong>Passing Year:</strong> {student.passingYear}</p>
     </div>
   );
 };
@@ -134,7 +144,7 @@ const StudentCards = () => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getallshownuserdetail"
+          "http://localhost:5000/api/user/getallapproveduserdetail"
         );
         console.log(response.data.data);
         setStudents(response.data.data);

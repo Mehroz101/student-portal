@@ -15,19 +15,7 @@ const GetAllUserDetail = async (req, res) => {
     console.log(error);
   }
 };
-const GetAllShownUserDetail = async (req, res) => {
-  try {
-    const user = await UserData.find({ isshown: true });
-    if (user) {
-      res.status(200).send({ success: true, message: "", data: user });
-    } else {
-      res.status(404).send({ success: false, message: "User not found" });
-    }
-  } catch (error) {
-    res.status(500).send({ success: false, message: error.message });
-    console.log(error);
-  }
-};
+
 const DeleteUserDetail = async (req, res) => {
   try {
     const { id } = req.body;
@@ -122,7 +110,8 @@ const UpdateUserDetail = async (req, res) => {
           phoneNumber,
           passingYear,
           cnic,
-          img: req.file.filename || existingUser.img,
+          img: req.file ? req.file.filename : existingUser.img,
+          status: "pending",
         },
         { new: true }
       );
@@ -180,28 +169,7 @@ const UpdateApprovalStatus = async (req, res) => {
     res.status(500).send({ success: false, message: error.message });
   }
 };
-const UpdateShowStatus = async (req, res) => {
-  try {
-    const { id, isshown } = req.body;
-    console.log(id, isshown);
-    const updatedUser = await UserData.findByIdAndUpdate(
-      id,
-      { isshown: isshown },
-      { new: true }
-    );
-    if (updatedUser) {
-      res.status(200).send({
-        success: true,
-        message: `Show status updated to ${isshown}`,
-      });
-    } else {
-      res.status(404).send({ success: false, message: "User not found" });
-    }
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send({ success: false, message: error.message });
-  }
-};
+
 const AddOrUpdateEvent = async (req, res) => {
   try {
     const { name, description, status, id = null } = req.body;
@@ -305,9 +273,7 @@ module.exports = {
   GetUserDetail,
   UpdateUserDetail,
   UpdateApprovalStatus,
-  UpdateShowStatus,
   GetAllApprovedUserDetail,
-  GetAllShownUserDetail,
   DeleteUserDetail,
   AddOrUpdateEvent,
   getAllEvents,

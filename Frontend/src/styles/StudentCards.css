@@ -16,7 +16,16 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
   }
-  
+  .student-card .userImg{
+    width: 100%;
+    height: 150px;
+    margin-right: 10px;
+  }
+  .student-card .userImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .student-card:hover {
     transform: translateY(-5px);
   }
