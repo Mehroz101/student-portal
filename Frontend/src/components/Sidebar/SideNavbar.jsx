@@ -28,7 +28,7 @@ const CustomSidebar = ({ visible, onHide }) => {
               <i className="pi pi-home"></i> Dashboard
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to={ROUTES.USERS}
               className="sidebar-link"
@@ -36,7 +36,7 @@ const CustomSidebar = ({ visible, onHide }) => {
             >
               <i className="pi pi-users"></i> Approved Requests
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               to={ROUTES.REQUESTS}

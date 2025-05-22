@@ -126,27 +126,21 @@ const StudentCard = ({ student }) => {
         <h3>{student.name}</h3>
         <StatusBadge status={student.status} />
       </div>
-      <p><strong>Father Name:</strong> {student.fatherName}</p>
-      <p><strong>CNIC:</strong> {student.cnic}</p>
-      <p><strong>Roll No:</strong> {student.rollno}</p>
-      <p><strong>DOB:</strong> {student.DOB}</p>
-      <p><strong>Gender:</strong> {student.gender}</p>
-      <p><strong>Phone No:</strong> {student.phoneNumber}</p>
       <p><strong>Passing Year:</strong> {student.passingYear}</p>
+      <p><strong>Description</strong> <br /> {student.desc}</p>
     </div>
   );
 };
 
 const StudentCards = () => {
   const [students, setStudents] = useState([]);
-  const { data, isLoading } = useQuery({
+  const {  isLoading } = useQuery({
     queryKey: ["allstudents"],
     queryFn: async () => {
       try {
         const response = await axios.get(
           "http://localhost:5000/api/user/getallapproveduserdetail"
         );
-        console.log(response.data.data);
         setStudents(response.data.data);
         return response.data;
       } catch (error) {

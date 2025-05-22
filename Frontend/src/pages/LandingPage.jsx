@@ -136,7 +136,6 @@ const navigate = useNavigate();
               </div>
             </div>
           </section>
-          <PopupForm isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 };

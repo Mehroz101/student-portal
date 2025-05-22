@@ -4,7 +4,8 @@ import axios from "axios";
 import { notify } from "../utils/notification";
 import { useState } from "react";
 const PopupForm = ({ data }) => {
- const backendImageUrl = data?.data?.img
+  console.log("Data in PopupForm:", data);
+  const backendImageUrl = data?.data?.img
     ? `http://localhost:5000/${data.data.img}`
     : null;
 
@@ -20,6 +21,7 @@ const PopupForm = ({ data }) => {
       phoneNumber: data?.data?.phoneNumber || "",
       passingYear: data?.data?.passingYear || "",
       gender: data?.data?.gender || "",
+      desc: data?.data?.desc || "",
     },
   });
 
@@ -64,7 +66,8 @@ const PopupForm = ({ data }) => {
       data.passingYear == "" ||
       data.gender == "" ||
       data.address == "" ||
-      data.image[0] == ""
+      data.image[0] == "" ||
+      data.desc == ""
     ) {
       return notify("warning", "Please fill all the fields");
     }
@@ -77,6 +80,7 @@ const PopupForm = ({ data }) => {
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("passingYear", data.passingYear);
     formData.append("gender", data.gender);
+    formData.append("desc", data.desc.trim());
     formData.append("image", data.image[0]);
     formMutation.mutate(formData);
   };
@@ -157,9 +161,22 @@ const PopupForm = ({ data }) => {
               />
             </div>
           </div>
+          <div className="form-group">
+            <label htmlFor="desc">Description:</label>
+            <textarea
+              id="desc"
+              placeholder="Your Description"
+              {...register("desc")}
+
+            />
+          </div>
           {previewImage && (
-  <img src={previewImage} alt="Preview" style={{ width: '100px', height: 'auto', marginTop: '10px' }} />
-)}
+            <img
+              src={previewImage}
+              alt="Preview"
+              style={{ width: "100px", height: "auto", marginTop: "10px" }}
+            />
+          )}
           <div className="form-group">
             <label htmlFor="image">Image:</label>
             <input

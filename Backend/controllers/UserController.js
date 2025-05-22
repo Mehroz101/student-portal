@@ -38,6 +38,7 @@ const GetAllApprovedUserDetail = async (req, res) => {
   try {
     const user = await UserData.find({ status: "approved" });
     if (user) {
+      console.log(user);
       res.status(200).send({ success: true, message: "", data: user });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
@@ -61,8 +62,10 @@ const GetUserDetail = async (req, res) => {
         phoneNumber: user.phoneNumber,
         passingYear: user.passingYear,
         cnic: user.cnic,
+        desc: user.desc,
         img: user.img,
       };
+      console.log(sendData);
       res.status(200).send({ success: true, message: "", data: sendData });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
@@ -84,6 +87,7 @@ const UpdateUserDetail = async (req, res) => {
       phoneNumber,
       passingYear,
       cnic,
+      desc,
     } = req.body;
     const userId = req.user.id;
     const existingUser = await UserData.findById(userId);
@@ -110,6 +114,7 @@ const UpdateUserDetail = async (req, res) => {
           phoneNumber,
           passingYear,
           cnic,
+          desc,
           img: req.file ? req.file.filename : existingUser.img,
           status: "pending",
         },
@@ -126,6 +131,7 @@ const UpdateUserDetail = async (req, res) => {
         phoneNumber,
         passingYear,
         cnic,
+        desc,
         img: req.file.filename,
       });
     }

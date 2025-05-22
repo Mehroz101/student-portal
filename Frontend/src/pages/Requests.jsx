@@ -38,6 +38,7 @@ export default function StudentRequests() {
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    status: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const { data, isLoading,refetch } = useQuery({
@@ -117,6 +118,8 @@ export default function StudentRequests() {
         return "success";
       case "rejected":
         return "danger";
+      case "pending":
+        return "info";
       default:
         return "warning";
     }
