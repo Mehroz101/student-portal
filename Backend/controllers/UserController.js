@@ -36,7 +36,7 @@ const DeleteUserDetail = async (req, res) => {
 };
 const GetAllApprovedUserDetail = async (req, res) => {
   try {
-    const user = await UserData.find({ status: "approved" });
+    const user = await UserData.find({ status: "approved", isshown: true });
     if (user) {
       console.log(user);
       res.status(200).send({ success: true, message: "", data: user });
@@ -175,6 +175,36 @@ const UpdateApprovalStatus = async (req, res) => {
     res.status(500).send({ success: false, message: error.message });
   }
 };
+const BookmarkUserDetail = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log(id);
+    const userstatus = await UserData.findById(id);
+    if (!userstatus) {
+      return res
+        .status(404)
+        .send({ success: false, message: "User not found" });
+    }
+    const updatedUser = await UserData.findByIdAndUpdate(
+      id,
+      { isshown: !userstatus.isshown },
+      { new: true }
+    );
+    if (updatedUser) {
+      res.status(200).send({
+        success: true,
+        message: `User ${
+          updatedUser.isshown ? "bookmarked" : "unbookmarked"
+        } successfully`,
+      });
+    } else {
+      res.status(404).send({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ success: false, message: error.message });
+  }
+};
 
 const AddOrUpdateEvent = async (req, res) => {
   try {
@@ -285,4 +315,5 @@ module.exports = {
   getAllEvents,
   deleteEvent,
   AllStates,
+  BookmarkUserDetail
 };

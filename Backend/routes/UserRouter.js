@@ -11,6 +11,7 @@ const {
   getAllEvents,
   deleteEvent,
   AllStates,
+  BookmarkUserDetail
 } = require("../controllers/UserController");
 const upload = require("../middleware/uploadImage");
 const router = express.Router();
@@ -19,6 +20,7 @@ router.get("/getuserdetail",authMiddleware, GetUserDetail);
 router.post("/updateuserdetail", authMiddleware, upload.single("image"), UpdateUserDetail);
 router.get("/getalluserdetail", GetAllUserDetail);
 router.post("/updateapprovalstatus", authMiddleware, UpdateApprovalStatus);
+router.post("/bookmarkuserdetail", authMiddleware, BookmarkUserDetail);
 router.get("/getallapproveduserdetail", GetAllApprovedUserDetail);
 router.post("/deleteuserdetail", authMiddleware, DeleteUserDetail);
 router.post("/addevent", authMiddleware, upload.single("image"), AddOrUpdateEvent);
