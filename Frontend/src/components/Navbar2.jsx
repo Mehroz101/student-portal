@@ -34,6 +34,14 @@ const Navbar2 = () => {
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => scrollToId("about")}>About</li>
           <li onClick={() => navigate("/events")}>Events</li>
+          <li className="dropdown">
+            <span className="dropdown-toggle">Resources</span>
+            <ul className="dropdown-menu ">
+              <li onClick={() => navigate("/resource1")}>Resource 1</li>
+              <li onClick={() => navigate("/resource2")}>Resource 2</li>
+              <li onClick={() => navigate("/resource3")}>Resource 3</li>
+            </ul>
+          </li>
           {usertoken ? (
             <li
               onClick={() => navigate("/profile")}
