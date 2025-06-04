@@ -126,7 +126,7 @@ const StudentCard = ({ student }) => {
         <h3>{student.name}</h3>
         <StatusBadge status={student.status} />
       </div>
-      <p><strong>Passing Year:</strong> {student.passingYear}</p>
+      <p><strong>Passing Year:</strong> {student.graduationYear}</p>
       <p><strong>Description</strong> <br /> {student.desc}</p>
     </div>
   );

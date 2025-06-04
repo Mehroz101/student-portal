@@ -56,16 +56,21 @@ const GetUserDetail = async (req, res) => {
       const sendData = {
         name: user.name,
         fatherName: user.fatherName,
-        rollno: user.rollno,
         gender: user.gender,
         DOB: user.DOB,
+        email: user.email,
         phoneNumber: user.phoneNumber,
-        passingYear: user.passingYear,
+        department: user.department,
+        admissionYear: user.admissionYear,
+        graduationYear: user.graduationYear,
+        company: user.company,
+        designation: user.designation,
+        city: user.city,
+        country: user.country,
         cnic: user.cnic,
         desc: user.desc,
         img: user.img,
       };
-      console.log(sendData);
       res.status(200).send({ success: true, message: "", data: sendData });
     } else {
       res.status(404).send({ success: false, message: "User not found" });
@@ -77,15 +82,20 @@ const GetUserDetail = async (req, res) => {
 };
 const UpdateUserDetail = async (req, res) => {
   try {
-    console.log(req.body);
     const {
       name,
       fatherName,
-      rollno,
       gender,
       DOB,
+      email,
       phoneNumber,
-      passingYear,
+      department,
+      admissionYear,
+      graduationYear,
+      company,
+      designation,
+      city,
+      country,
       cnic,
       desc,
     } = req.body;
@@ -108,11 +118,17 @@ const UpdateUserDetail = async (req, res) => {
         {
           name,
           fatherName,
-          rollno,
           gender,
           DOB,
+          email,
           phoneNumber,
-          passingYear,
+          department,
+          admissionYear,
+          graduationYear,
+          company,
+          designation,
+          city,
+          country,
           cnic,
           desc,
           img: req.file ? req.file.filename : existingUser.img,
@@ -122,24 +138,27 @@ const UpdateUserDetail = async (req, res) => {
       );
     } else {
       user = await UserData.create({
-        _id: userId, // optional: include this if you want to preserve the given ID
+        _id: userId,
         name,
         fatherName,
-        rollno,
         gender,
         DOB,
+        email,
         phoneNumber,
-        passingYear,
+        department,
+        admissionYear,
+        graduationYear,
+        company,
+        designation,
+        city,
+        country,
         cnic,
         desc,
         img: req.file.filename,
       });
     }
-
     if (!user) {
-      return res
-        .status(404)
-        .send({ success: false, message: "User not found" });
+      return res.status(404).send({ success: false, message: "User not found" });
     }
     res.status(200).send({
       success: true,

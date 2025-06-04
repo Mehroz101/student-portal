@@ -241,9 +241,11 @@ export default function StudentRequests() {
         />
         <Column field="cnic" header="CNIC"  />
         <Column field="DOB" header="DOB" />
-        <Column field="rollno" header="Roll No" />
-        <Column field="passingYear" header="Passing Year" />
+        <Column field="phoneNumber" header="Phone Number" />
+        <Column field="admissionYear" header="Admission Year" />
+        <Column field="graduationYear" header="Graduation Year" />
         <Column field="gender" header="Gender" />
+        <Column field="email" header="Email" />
         <Column
           field="status"
           header="Status"
