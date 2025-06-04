@@ -149,7 +149,7 @@ const StudentCards = () => {
     },
   });
   return (
-    <div className="cards-container">
+    <div className="cards-container " style={{marginTop:"100px"}}>
       {isLoading ? "Loading..." : students.map((student) => (
         <StudentCard key={student._id} student={student} />
       ))}

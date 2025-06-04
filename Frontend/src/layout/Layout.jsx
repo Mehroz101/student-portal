@@ -14,8 +14,8 @@ const Layout = () => {
         <Navbar visible={visible} onShow={() => setVisible(true)} />
       </div>
       <div className="sidebar_components">
-        <CustomSidebar visible={visible} onHide={() => setVisible(false)} />
-        <div className="p-5">
+        <CustomSidebar visible={visible} onHide={() => setVisible(false)}  />
+        <div className="p-5 ">
           <Outlet />
         </div>
       </div>
