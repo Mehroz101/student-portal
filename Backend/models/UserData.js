@@ -13,19 +13,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    rollno: {
-      type: String,
-      required: true,
-    },
     DOB: {
       type: String,
       required: true,
     },
     phoneNumber: {
-      type: String,
-      required: true,
-    },
-    passingYear: {
       type: String,
       required: true,
     },
@@ -48,6 +40,38 @@ const userSchema = new mongoose.Schema(
     isshown: {
       type: Boolean,
       default: false,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    department: {
+      type: String,
+      required: true,
+    },
+    admissionYear: {
+      type: String,
+      required: true,
+    },
+    graduationYear: {
+      type: String,
+      required: true,
+    },
+    company: {
+      type: String,
+      required: true,
+    },
+    designation: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

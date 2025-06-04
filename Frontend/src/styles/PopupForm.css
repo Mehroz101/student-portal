@@ -1,0 +1,38 @@
+/* Add or update these styles for the icon-inside-input effect */
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+.input-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e0e0e0; /* light gray background */
+  color: #555;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px 0 0 6px;
+  font-size: 1.1rem;
+  pointer-events: none;
+  z-index: 2;
+}
+.input-with-icon {
+  padding-left: 45px !important;
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+select.input-with-icon {
+  height: 38px;
+  padding-left: 45px !important;
+}
+textarea.input-with-icon {
+  padding-left: 45px !important;
+  min-height: 80px;
+}
