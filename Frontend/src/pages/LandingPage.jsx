@@ -38,7 +38,7 @@ const LandingPage = () => {
           </header>
         </div>
       </div>
-      <div className="cards">
+      <div className="cards1">
         <div className="card blue">
           <span className="icon">📚</span>
           <h3>Learn Online</h3>
@@ -72,10 +72,14 @@ const LandingPage = () => {
           <div className="left">
             <h2>About Us</h2>
             <p>
-              Prof. Dr. Muhammad Kamran joined Muhammad Nawaz Sharif University
-              of Engineering & Technology, Multan as Vice Chancellor on
-              September 10, 2022.[7] Engr. Kamran Umer is working as PS to the
-              Vice Chancellor.
+              Professor Kashan Basit is a dedicated academic leader with a
+              profound commitment to excellence in education and research. With
+              years of experience guiding students and developing innovative
+              learning environments, he continues to inspire future
+              professionals. His leadership fosters a culture of integrity,
+              growth, and collaboration. Professor Basit’s vision and mentorship
+              play a vital role in shaping the success of this student portal
+              initiative.
             </p>
             <button className="read-more">Read More</button>
           </div>
@@ -137,8 +141,8 @@ const LandingPage = () => {
             <h3>Expert Teachers</h3>
             <p>
               Expert teachers are reflective practitioners who continuously
-            analyze and adapt their teaching strategies to enhance student
-            learning outcomes.
+              analyze and adapt their teaching strategies to enhance student
+              learning outcomes.
             </p>
             <button className="read-more">Read More</button>
           </div>
@@ -147,8 +151,8 @@ const LandingPage = () => {
             <h3>Online Learning</h3>
             <p>
               Muhammad Nawaz Sharif University of Engineering and Technology
-            (MNS-UET) is a public university established in 2012 in Multan,
-            Pakistan, offering accredited engineering and technology programs.
+              (MNS-UET) is a public university established in 2012 in Multan,
+              Pakistan, offering accredited engineering and technology programs.
             </p>
             <button className="read-more">Read More</button>
           </div>

@@ -97,7 +97,7 @@ const deleteMutation = useMutation({
           <h1>Events</h1>
           <Button label="Add Event" onClick={() => setShowForm(true)} />
         </div>
-        <div className="events_cards">
+        <div className="events_cards"  >
           {isLoading && <p>Loading...</p>}
           {data?.data?.map((event, index) => (
             

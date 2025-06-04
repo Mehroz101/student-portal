@@ -96,41 +96,82 @@
 
 
 /* Reset for section scope */
-.cards {
+.cards1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 30px;
+  padding: 40px;
   width: 100%;
+  background: #f4f8fb; /* Light background */
 }
 
-.cards .card {
+.cards1 .card {
   background: white;
-  padding: 20px;
+  padding: 30px 20px;
   max-width: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.blue {
-  background-color: #c7e3ff;
-  color: #333333;
+.cards1 .card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-.green {
-  background-color: #c8ffc8;
-  color: #333333;
+.cards1 .card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease-in-out;
+}
+
+.cards1 .card:hover::after {
+  left: 200%;
 }
 
 .card h3 {
-  margin: 10px 0;
+  margin: 15px 0 10px;
+  font-size: 1.3em;
+  color: #2c3e50;
+}
+
+.card p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
 }
 
 .icon {
-  font-size: 2em;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #0077cc;
+  transition: color 0.3s;
 }
+
+.card:hover .icon {
+  color: #005fa3;
+}
+
+.blue {
+  background-color: #e5f2ff;
+}
+
+.green {
+  background-color: #e5ffe5;
+}
+
 
 .aboutus {
   padding: 4rem 2rem;
