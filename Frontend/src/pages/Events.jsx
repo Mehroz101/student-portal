@@ -92,12 +92,12 @@ const deleteMutation = useMutation({
 
   return (
     <>
-      <div className="events_page">
+      <div className="events_page" >
         <div className="page_top flex justify-content-between align-items-center">
           <h1>Events</h1>
           <Button label="Add Event" onClick={() => setShowForm(true)} />
         </div>
-        <div className="events_cards">
+        <div className="events_cards"  >
           {isLoading && <p>Loading...</p>}
           {data?.data?.map((event, index) => (
             
