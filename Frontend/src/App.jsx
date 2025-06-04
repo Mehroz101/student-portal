@@ -23,6 +23,7 @@ import UserLogin from "./pages/UserLogin";
 import Profile from "./pages/Profile";
 import ProtectedUserRoute from "./context/ProtectedUserRoutes";
 import Library from "./pages/Library";
+import Lab from "./pages/Lab";
 
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
@@ -77,6 +78,7 @@ function AppRoutes() {
         <Route path="students" element={<StudentCards />} />
         <Route path="events" element={<ShowEvents />} />
         <Route path="library" element={<Library />} />
+        <Route path="/lab" element={<Lab />} />
         <Route>
           <Route path="/profile" element={<ProtectedUserRoute element={<Profile />} />} />
         </Route>

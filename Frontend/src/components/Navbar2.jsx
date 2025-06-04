@@ -37,8 +37,8 @@ const Navbar2 = () => {
           <li className="dropdown">
             <span className="dropdown-toggle">Resources</span>
             <ul className="dropdown-menu ">
-              <li onClick={() => navigate("/library")}>library</li>
-              <li onClick={() => navigate("/resource2")}>Resource 2</li>
+              <li onClick={() => navigate("/library")}>Library</li>
+              <li onClick={() => navigate("/lab")}>Lab</li>
               <li onClick={() => navigate("/resource3")}>Resource 3</li>
             </ul>
           </li>
