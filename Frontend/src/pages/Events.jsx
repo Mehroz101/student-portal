@@ -92,7 +92,7 @@ const deleteMutation = useMutation({
 
   return (
     <>
-      <div className="events_page">
+      <div className="events_page" >
         <div className="page_top flex justify-content-between align-items-center">
           <h1>Events</h1>
           <Button label="Add Event" onClick={() => setShowForm(true)} />
