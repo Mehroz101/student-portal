@@ -269,44 +269,59 @@
 
 
 .stats_container {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  background: url('library-background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #333;
+  color: #222;
+  padding: 60px 20px;
+  perspective: 1000px; /* Enables 3D depth */
 }
 
 .stats {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 40px 20px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  gap: 50px;
+  padding: 70px;
 }
 
 .stat-item {
-  text-align: center;
-  padding: 20px 70px;
+  background: linear-gradient(145deg, lightblue, white);
+  border-radius: 20px;
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.15);
+  padding: 40px 60px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform: rotateY(0deg) translateZ(0);
 }
 
+.stat-item:hover {
+  transform: rotateY(10deg) translateZ(20px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
 
 .stat-icon {
-  font-size: 2em;
-  display: block;
-  margin-bottom: 10px;
+  font-size: 3em;
+  color: #007BFF;
+  margin-bottom: 15px;
+  transform: translateZ(10px);
 }
 
 .stat-item h2 {
-  font-size: 2.5em;
+  font-size: 3em;
   margin: 0;
+  color: #111;
+  transform: translateZ(10px);
 }
 
 .stat-item p {
-  margin: 5px 0 0;
+  margin-top: 8px;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.95em;
+  color: #555;
+  letter-spacing: 1px;
+  transform: translateZ(8px);
 }
+
 
 .features {
   width: 100%;
