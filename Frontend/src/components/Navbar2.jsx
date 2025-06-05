@@ -25,7 +25,7 @@ const Navbar2 = () => {
     <nav className="navbar2">
       <div className="navbar-brand">
         <a href="/" className="brand-logo">
-          Alumni Hub
+          MNS UET Alumni Hub
         </a>
       </div>
       <div className={`navbar-links ${isMobile ? "mobile" : ""}`}>
