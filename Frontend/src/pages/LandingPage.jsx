@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles/LandingPage.css";
-import std1 from "../assets/std1.jpg";
-import std2 from "../assets/std2.jpg";
-import std3 from "../assets/std3.jpg";
+import Asif from "../assets/Asif.jpg";
+import Saad from "../assets/Saad.jpg";
+import Shehraz from "../assets/Shehraz.jpg";
+import Nisar from "../assets/Nisar.jpg";
+import Ammar from "../assets/Ammar.jpg";
 import aboutImg from "../assets/about.png";
 import PopupForm from "../components/PopupForm";
 import { useNavigate } from "react-router-dom";
@@ -162,7 +164,7 @@ const LandingPage = () => {
         <h2>TESTIMONIALS</h2>
         <div className="testimonial-cards">
           <div className="testimonial-card">
-            <img src={std1} alt="User 1" className="testimonial-img" />
+            <img src={Asif} alt="User 1" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
               Great courses and amazing support! Highly recommend to everyone.
@@ -170,7 +172,7 @@ const LandingPage = () => {
             <p className="testimonial-author">- Asif Ali </p>
           </div>
           <div className="testimonial-card">
-            <img src={std2} alt="User 2" className="testimonial-img" />
+            <img src={Saad} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
               The best learning experience I’ve ever had. Excellent teachers!
@@ -178,7 +180,7 @@ const LandingPage = () => {
             <p className="testimonial-author">- Saad Murtaza</p>
           </div>
           <div className="testimonial-card">
-            <img src={std3} alt="User 2" className="testimonial-img" />
+            <img src={Shehraz} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
               The best learning experience I’ve ever had. Excellent teachers!
@@ -186,7 +188,7 @@ const LandingPage = () => {
             <p className="testimonial-author">- Muhammad Shehraz</p>
           </div>
            <div className="testimonial-card">
-            <img src={std3} alt="User 2" className="testimonial-img" />
+            <img src={Nisar} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
               The best learning experience I’ve ever had. Excellent teachers!
@@ -194,7 +196,7 @@ const LandingPage = () => {
             <p className="testimonial-author">- Adbul Nisar</p>
           </div>
            <div className="testimonial-card">
-            <img src={std3} alt="User 2" className="testimonial-img" />
+            <img src={Ammar} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
               The best learning experience I’ve ever had. Excellent teachers!
