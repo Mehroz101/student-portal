@@ -167,7 +167,7 @@ const LandingPage = () => {
             <p className="testimonial-text">
               Great courses and amazing support! Highly recommend to everyone.
             </p>
-            <p className="testimonial-author">- Saad Murtaza</p>
+            <p className="testimonial-author">- Asif Ali </p>
           </div>
           <div className="testimonial-card">
             <img src={std2} alt="User 2" className="testimonial-img" />
@@ -175,7 +175,7 @@ const LandingPage = () => {
             <p className="testimonial-text">
               The best learning experience I’ve ever had. Excellent teachers!
             </p>
-            <p className="testimonial-author">- Asif Ali</p>
+            <p className="testimonial-author">- Saad Murtaza</p>
           </div>
           <div className="testimonial-card">
             <img src={std3} alt="User 2" className="testimonial-img" />
@@ -184,6 +184,22 @@ const LandingPage = () => {
               The best learning experience I’ve ever had. Excellent teachers!
             </p>
             <p className="testimonial-author">- Muhammad Shehraz</p>
+          </div>
+           <div className="testimonial-card">
+            <img src={std3} alt="User 2" className="testimonial-img" />
+            <div className="stars">★★★★★</div>
+            <p className="testimonial-text">
+              The best learning experience I’ve ever had. Excellent teachers!
+            </p>
+            <p className="testimonial-author">- Adbul Nisar</p>
+          </div>
+           <div className="testimonial-card">
+            <img src={std3} alt="User 2" className="testimonial-img" />
+            <div className="stars">★★★★★</div>
+            <p className="testimonial-text">
+              The best learning experience I’ve ever had. Excellent teachers!
+            </p>
+            <p className="testimonial-author">- Syed Ammar Atif</p>
           </div>
         </div>
       </section>
