@@ -14,9 +14,9 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section">
           <h3>Alumni Hub</h3>
-          <p>Address, City, Country</p>
-          <p>Email: info@university.com</p>
-          <p>Phone: +123 456 7890</p>
+          <p>QasimPur Colony, BCG Chowk, Multan, Punjab, Pakistan, Multan, Pakistan</p>
+          <p>Email: info@mnsuet.edu.pk</p>
+          <p>Phone: +92-61-9330592</p>
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
@@ -29,10 +29,10 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Follow Us</h3>
           <ul className="social-links">
-            <li><a href="#" className="social-icon">Facebook</a></li>
-            <li><a href="#" className="social-icon">Twitter</a></li>
-            <li><a href="#" className="social-icon">Instagram</a></li>
-            <li><a href="#" className="social-icon">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/mnsuetofficial" className="social-icon">Facebook</a></li>
+            <li><a href="https://x.com/i/flow/login?redirect_after_login=%2Fmnsuetmultan" className="social-icon">Twitter</a></li>
+            <li><a href="https://www.instagram.com/mnsuetofficial/" className="social-icon">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/school/mnsuetmultan/" className="social-icon">LinkedIn</a></li>
           </ul>
         </div>
       </div>

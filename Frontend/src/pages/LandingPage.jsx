@@ -19,11 +19,10 @@ const LandingPage = () => {
         <div className="overlay">
           <header className="header">
             <div className="header-content">
-              <h1>Alumni Hub for Students</h1>
+              <h1></h1>
               <p>
                 The Muhammad Nawaz Sharif University of Engineering and
-                Technology (MNSUET) (Urdu: جامعہ محمد نواز شریف ہندسیہ و
-                تکنیکیہ) is a public university located in Multan, Punjab,
+                Technology (MNSUET) is a public university located in Multan, Punjab,
                 Pakistan. It was established in 2012 on the initiative of Chief
                 Minister Punjab Mian Muhammad Shahbaz Sharif. The Act of
                 Muhammad Nawaz Sharif University of Engineering and Technology
@@ -40,7 +39,7 @@ const LandingPage = () => {
           </header>
         </div>
       </div>
-      <div className="cards1">
+      {/* <div className="cards1">
         <div className="card blue">
           <span className="icon">📚</span>
           <h3>Learn Online</h3>
@@ -68,18 +67,18 @@ const LandingPage = () => {
             positive atmosphere.
           </p>
         </div>
-      </div>
+      </div> */}
       <div className="aboutus" id="about">
         <div className="aboutus_container">
           <div className="left">
             <h2>About Us</h2>
             <p>
-              Professor Kashan Basit is a dedicated academic leader with a
+              Professor Engr. Muhammad Kashan Basit is a dedicated academic leader with a
               profound commitment to excellence in education and research. With
               years of experience guiding students and developing innovative
               learning environments, he continues to inspire future
               professionals. His leadership fosters a culture of integrity,
-              growth, and collaboration. Professor Basit’s vision and mentorship
+              growth, and collaboration. Professor Kashan’s vision and mentorship
               play a vital role in shaping the success of this student portal
               initiative.
             </p>
@@ -96,22 +95,22 @@ const LandingPage = () => {
       <div className="stats">
         <div className="stat-item">
           <span className="stat-icon">📚</span>
-          <h2>568</h2>
+          <h2>286</h2>
           <p>Subjects</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">👥</span>
-          <h2>3500</h2>
+          <h2>1251</h2>
           <p>Students</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">🧪</span>
-          <h2>65</h2>
+          <h2>31</h2>
           <p>Modern Labs</p>
         </div>
         <div className="stat-item">
           <span className="stat-icon">👨‍🏫</span>
-          <h2>250</h2>
+          <h2>82</h2>
           <p>Teachers</p>
         </div>
       </div>
@@ -167,7 +166,7 @@ const LandingPage = () => {
             <img src={Asif} alt="User 1" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
-              Great courses and amazing support! Highly recommend to everyone.
+              "The university provided the perfect environment for both learning and innovation. I felt supported every step of the way."
             </p>
             <p className="testimonial-author">- Asif Ali </p>
           </div>
@@ -175,7 +174,7 @@ const LandingPage = () => {
             <img src={Saad} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
-              The best learning experience I’ve ever had. Excellent teachers!
+              "Outstanding campus, great resources, and inspiring professors. I couldn’t have asked for more."
             </p>
             <p className="testimonial-author">- Saad Murtaza</p>
           </div>
@@ -183,7 +182,7 @@ const LandingPage = () => {
             <img src={Shehraz} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
-              The best learning experience I’ve ever had. Excellent teachers!
+              "Studying here was a life-changing experience. The faculty genuinely cared about our growth."
             </p>
             <p className="testimonial-author">- Muhammad Shehraz</p>
           </div>
@@ -191,15 +190,14 @@ const LandingPage = () => {
             <img src={Nisar} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
-              The best learning experience I’ve ever had. Excellent teachers!
-            </p>
+"This university shaped my future in the best possible way. The academic and personal support was exceptional."            </p>
             <p className="testimonial-author">- Adbul Nisar</p>
           </div>
            <div className="testimonial-card">
             <img src={Ammar} alt="User 2" className="testimonial-img" />
             <div className="stars">★★★★★</div>
             <p className="testimonial-text">
-              The best learning experience I’ve ever had. Excellent teachers!
+             "From world-class lectures to hands-on experience, everything was top-notch. I’m proud to be an alumnus."
             </p>
             <p className="testimonial-author">- Syed Ammar Atif</p>
           </div>
