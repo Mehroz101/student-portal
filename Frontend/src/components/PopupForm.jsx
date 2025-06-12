@@ -13,6 +13,7 @@ import {
   faPhone,
   faFileAlt,
   faImage,
+  faLink,
 } from "@fortawesome/free-solid-svg-icons";
 
 const PopupForm = ({ data }) => {
@@ -40,6 +41,7 @@ const PopupForm = ({ data }) => {
       city: data?.data?.city || "",
       country: data?.data?.country || "",
       desc: data?.data?.desc || "",
+      url: data?.data?.url || "",
     },
   });
 
@@ -89,7 +91,9 @@ const PopupForm = ({ data }) => {
       data.designation == "" ||
       data.city == "" ||
       data.country == "" ||
-      data.desc == "" 
+      data.desc == "" ||
+      data.url == undefined || data.url == "" ||
+      !data.image || !data.image[0]
     ) {
       return notify("warning", "Please fill all the fields");
     }
@@ -108,7 +112,8 @@ const PopupForm = ({ data }) => {
     formData.append("designation", data.designation);
     formData.append("city", data.city);
     formData.append("country", data.country);
-    formData.append("desc", data.desc.trim());
+    formData.append("desc", typeof data.desc === "string" ? data.desc.trim() : "");
+    formData.append("url", typeof data.url === "string" ? data.url.trim() : "");
     formData.append("image", data.image[0]);
     formMutation.mutate(formData);
   };
@@ -326,6 +331,20 @@ const PopupForm = ({ data }) => {
                 </div>
               </div>
               <div className="form-group">
+                <label htmlFor="url">LinkedIn URL:</label>
+                <div className="input-icon-wrapper">
+                  <span className="input-icon">
+                    <FontAwesomeIcon icon={faLink} />
+                  </span>
+                  <input
+                    id="url"
+                    placeholder="LinkedIn URL"
+                    {...register("url")}
+                    className="input-with-icon"
+                  />
+                </div>
+              </div>
+              <div className="form-group">
                 <label htmlFor="country">Country:</label>
                 <div className="input-icon-wrapper">
                   <span className="input-icon">
@@ -390,7 +409,11 @@ const PopupForm = ({ data }) => {
                   marginTop: "16px",
                 }}
               >
-                <button type="button" className="submit-btn" onClick={handleBack}>
+                <button
+                  type="button"
+                  className="submit-btn"
+                  onClick={handleBack}
+                >
                   Back
                 </button>
                 <button className="submit-btn" type="submit">

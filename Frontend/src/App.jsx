@@ -76,12 +76,15 @@ function AppRoutes() {
       <Route path="/userlogin" element={<UserLogin />} />
       <Route path="/" element={<MainLayout />}>
         <Route index element={<LandingPage />} />
-        <Route path="students" element={<StudentCards />} />
-        <Route path="events" element={<ShowEvents />} />
         <Route path="library" element={<Library />} />
         <Route path="/lab" element={<Lab />} />
         <Route>
-          <Route path="/profile" element={<ProtectedUserRoute element={<Profile />} />} />
+          <Route
+            path="/profile"
+            element={<ProtectedUserRoute element={<Profile />} />}
+          />
+          <Route path="/students" element={<StudentCards />} />
+          <Route path="/events" element={<ShowEvents />} />
         </Route>
         <Route path="newsletter" element={<Newsletter />} />
       </Route>

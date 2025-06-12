@@ -29,12 +29,7 @@ const LandingPage = () => {
                 Multan was approved in 2014. The university is named after Nawaz
                 Sharif.
               </p>
-              <button
-                className="read-more"
-                onClick={() => navigate("/userlogin")}
-              >
-                Register
-              </button>
+            
             </div>
           </header>
         </div>
