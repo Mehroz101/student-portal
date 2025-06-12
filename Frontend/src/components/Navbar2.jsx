@@ -25,7 +25,7 @@ const Navbar2 = () => {
     <nav className="navbar2">
       <div className="navbar-brand">
         <a href="/" className="brand-logo">
-          MNS UET Alumni Hub
+         Alumni Hub
         </a>
       </div>
       <div className={`navbar-links ${isMobile ? "mobile" : ""}`}>
@@ -35,19 +35,20 @@ const Navbar2 = () => {
           <li onClick={() => navigate("/students")}>Alumni</li>
           <li onClick={() => navigate("/events")}>Events</li>
           <li className="dropdown">
-            <span className="dropdown-toggle">Faclities</span>
+            <span className="dropdown-toggle">Benefits</span>
             <ul className="dropdown-menu ">
-              <li onClick={() => navigate("/library")}>Library</li>
-              <li onClick={() => navigate("/lab")}>Lab</li>
-              <li onClick={() => navigate("/newsletter")}>News/Letter</li>
+              <li onClick={() => navigate("/library")}>Job Posting</li>
+              <li onClick={() => navigate("/lab")}>Our Societies</li>
+              <li onClick={() => navigate("/newsletter")}>News Letter</li>
             </ul>
           </li>
+          <li onClick={() => navigate("/contact")}>Contact Us</li>
           {usertoken ? (
             <li
               onClick={() => navigate("/profile")}
               className="border bg-blue-600 py-2 px-4 border-round"
             >
-              profile
+              My Profile
             </li>
           ) : (
             <li
