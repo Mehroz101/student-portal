@@ -29,7 +29,9 @@ const LandingPage = () => {
                 Multan was approved in 2014. The university is named after Nawaz
                 Sharif.
               </p>
+
             
+
             </div>
           </header>
         </div>
@@ -77,7 +79,7 @@ const LandingPage = () => {
               play a vital role in shaping the success of this student portal
               initiative.
             </p>
-            <button className="read-more">Read More</button>
+            {/* <button className="read-more">Read More</button> */}
           </div>
           <div className="right">
             <div className="image">
@@ -130,7 +132,7 @@ const LandingPage = () => {
               and Referencing using EndNote, catering to both students and
               professionals seeking to expand their expertise.
             </p>
-            <button className="read-more">Read More</button>
+            {/* <button className="read-more">Read More</button> */}
           </div>
           <div className="feature-card">
             <span className="icon">👩‍🏫</span>
@@ -140,7 +142,7 @@ const LandingPage = () => {
               analyze and adapt their teaching strategies to enhance student
               learning outcomes.
             </p>
-            <button className="read-more">Read More</button>
+            {/* <button className="read-more">Read More</button> */}
           </div>
           <div className="feature-card">
             <span className="icon">💻</span>
@@ -150,7 +152,7 @@ const LandingPage = () => {
               (MNS-UET) is a public university established in 2012 in Multan,
               Pakistan, offering accredited engineering and technology programs.
             </p>
-            <button className="read-more">Read More</button>
+            {/* <button className="read-more">Read More</button> */}
           </div>
         </div>
       </section>
@@ -171,7 +173,7 @@ const LandingPage = () => {
             <p className="testimonial-text">
               "Outstanding campus, great resources, and inspiring professors. I couldn’t have asked for more."
             </p>
-            <p className="testimonial-author">- Saad Murtaza</p>
+            <p className="testimonial-author">- Asif Ali</p>
           </div>
           <div className="testimonial-card">
             <img src={Shehraz} alt="User 2" className="testimonial-img" />
