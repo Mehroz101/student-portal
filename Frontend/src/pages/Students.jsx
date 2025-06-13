@@ -106,8 +106,8 @@ const students = [
   // Add 7 more dummy students here...
 ];
 
-const StatusBadge = ({ status }) => {
-  return <span className={`badge ${status}`}>{status.toUpperCase()}</span>;
+const StatusBadge = ({ url="https://www.linkedin.com" }) => {
+  return <a  href={`${url}`} className={`bg-blue-100 px-2 py-1 rounded-xl`} target="_blank">linkedin</a>;
 };
 
 const StudentCard = ({ student }) => {
@@ -124,7 +124,7 @@ const StudentCard = ({ student }) => {
       </div>
       <div className="card-header">
         <h3>{student.name}</h3>
-        <StatusBadge status={student.status} />
+        <StatusBadge url={student.url} />
       </div>
       <p><strong>Passing Year:</strong> {student.graduationYear}</p>
       <p><strong>Description</strong> <br /> {student.desc}</p>
