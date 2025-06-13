@@ -176,7 +176,7 @@ const LandingPage = () => {
             <p className="testimonial-text">
               "Outstanding campus, great resources, and inspiring professors. I couldn’t have asked for more."
             </p>
-            <p className="testimonial-author">- Saad Murtaza</p>
+            <p className="testimonial-author">- Asif Ali</p>
           </div>
           <div className="testimonial-card">
             <img src={Shehraz} alt="User 2" className="testimonial-img" />
