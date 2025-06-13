@@ -21,10 +21,10 @@ router.post("/updateuserdetail", authMiddleware, upload.single("image"), UpdateU
 router.get("/getalluserdetail", GetAllUserDetail);
 router.post("/updateapprovalstatus", authMiddleware, UpdateApprovalStatus);
 router.post("/bookmarkuserdetail", authMiddleware, BookmarkUserDetail);
-router.get("/getallapproveduserdetail", GetAllApprovedUserDetail);
+router.get("/getallapproveduserdetail",authMiddleware, GetAllApprovedUserDetail);
 router.post("/deleteuserdetail", authMiddleware, DeleteUserDetail);
 router.post("/addevent", authMiddleware, upload.single("image"), AddOrUpdateEvent);
-router.get("/allevent", getAllEvents);
+router.get("/allevent", authMiddleware,getAllEvents);
 router.post("/deleteevent",authMiddleware, deleteEvent);
 router.get("/allstates", authMiddleware,AllStates);
 

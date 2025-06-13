@@ -32,8 +32,12 @@ const Navbar2 = () => {
         <ul className="align-items-center">
           <li onClick={() => navigate("/")}>Home</li>
           <li onClick={() => scrollToId("about")}>About</li>
-          <li onClick={() => navigate("/students")}>Alumni</li>
-          <li onClick={() => navigate("/events")}>Events</li>
+          {usertoken && (
+            <>
+              <li onClick={() => navigate("/students")}>Alumni</li>
+              <li onClick={() => navigate("/events")}>Events</li>
+            </>
+          )}
           <li className="dropdown">
             <span className="dropdown-toggle">Benefits</span>
             <ul className="dropdown-menu ">

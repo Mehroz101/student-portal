@@ -28,7 +28,10 @@ const Profile = () => {
         console.log(error.message);
       }
     },
-  });
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  },
+);
   return (
     <div>
       {isLoading ? (
