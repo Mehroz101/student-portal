@@ -29,6 +29,7 @@ import Contact from "./pages/Contact";
 import Mission from "./pages/Mission";
 import Team from "./pages/Team";
 import History from "./pages/History";
+import FAQ from "./pages/FAQ";
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
@@ -95,6 +96,7 @@ function AppRoutes() {
         <Route path="about/mission" element={<Mission />} />
         <Route path="about/team" element={<Team />} />
         <Route path="about/history" element={<History />} />
+        <Route path="faq" element={<FAQ />} />
       </Route>
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path={ROUTES.SIGNUP} element={<Signup />} />

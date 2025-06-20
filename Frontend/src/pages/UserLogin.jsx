@@ -12,8 +12,26 @@ const UserLogin = () => {
 
   return (
     <div className="auth-container">
+      
       <div className="auth-left">
-        <div className="auth-box">
+        <div className="auth-box" >
+        <div className="FAQ">
+          <button
+            className="faq-link-btn"
+            onClick={() => window.open("/faq", "_blank")}
+          >
+            FAQ
+          </button>
+          <span
+            className="Homelogin"
+            onClick={() => window.location.href = "/"}
+            tabIndex={0}
+            aria-label="Go to Home"
+            role="button"
+          >
+            🏠
+          </span>
+        </div> 
           <h2>{isLogin ? "Welcome Back" : "Create Account"}</h2>
           <p className="subheading">
             {isLogin
@@ -26,7 +44,7 @@ const UserLogin = () => {
           <p className="toggle-auth">
             {isLogin ? (
               <>
-                Don’t have an account?{" "}
+                <span>Create Account |</span>{" "}
                 <span onClick={() => setIsLogin(false)}>Register</span>
               </>
             ) : (

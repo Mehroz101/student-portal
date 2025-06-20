@@ -18,7 +18,7 @@ const LandingPage = () => {
       <div className="container">
         <div className="overlay">
           <header className="header">
-            <div className="header-content">
+            {/* <div className="header-content">
               <h1></h1>
               <p>
                 The Muhammad Nawaz Sharif University of Engineering and
@@ -32,7 +32,7 @@ const LandingPage = () => {
 
             
 
-            </div>
+            </div> */}
           </header>
         </div>
       </div>

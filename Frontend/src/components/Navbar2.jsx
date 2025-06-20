@@ -34,9 +34,9 @@ const Navbar2 = () => {
           <li className="dropdown">
             <span className="dropdown-toggle">About</span>
             <ul className="dropdown-menu">
-              <li onClick={() => navigate("/about/mission")}>Our Mission</li>
-              <li onClick={() => navigate("/about/team")}>Our Team</li>
-              <li onClick={() => navigate("/about/history")}>History</li>
+              <li onClick={() => navigate("/about/mission")}>Recetor Message</li>
+              <li onClick={() => navigate("/about/team")}>About MNS UET</li>
+              <li onClick={() => navigate("/about/history")}>OUR Team</li>
             </ul>
           </li>
           {usertoken && (
