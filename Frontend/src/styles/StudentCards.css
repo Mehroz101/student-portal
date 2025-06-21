@@ -1,11 +1,17 @@
 .cards-container {
-    margin-left: 270px;
+  margin-left: 270px; /* matches dockleft width */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  min-height: 100vh; /* or auto based on content */
+}
+
+  .students-list{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    min-height: 70vh;
   }
   
   .student-card {
@@ -63,22 +69,23 @@
     font-size: 14px;
   }
   
-  .dockleft {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 70vh;
-    width: 270px;
-    background: #fff;
-    box-shadow: 2px 0 16px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: -1;
-    padding: 2rem 1.2rem 2rem 1.2rem;
-    overflow-y: auto;
-    transition: box-shadow 0.3s, left 0.3s;
-  }
+ .dockleft {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  width: 270px;
+  background: #fff;
+  box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.2rem 2rem 1.2rem;
+  overflow-y: auto;
+  transition: box-shadow 0.3s, left 0.3s;
+  z-index: 10; /* Ensure it's clickable and not behind other elements */
+}
+
   
   .dockleft-profile-img-wrapper {
     width: 90px;
@@ -143,6 +150,10 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    z-index: 9999;
+    position: relative !important;
+      pointer-events: all !important;
+
     box-shadow: 0 2px 8px rgba(79,138,139,0.08);
     transition: background 0.2s, transform 0.2s;
   }
@@ -151,48 +162,53 @@
     transform: translateY(-2px) scale(1.03);
   }
   
-  @media (max-width: 900px) {
-    .dockleft {
-      width: 180px;
-      padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-    }
-    .cards-container {
-      margin-left: 180px;
-    }
+
+
+  /* Responsive Adjustments */
+@media (max-width: 900px) {
+  .dockleft {
+    width: 200px;
   }
-  @media (max-width: 700px) {
-    .dockleft {
-      position: static;
-      width: 100%;
-      height: auto;
-      flex-direction: row;
-      align-items: flex-start;
-      border-radius: 0 0 18px 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 1rem 0.5rem;
-    }
-    .dockleft-profile-img-wrapper {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 0;
-      margin-right: 1rem;
-    }
-    .dockleft-profile-info {
-      text-align: left;
-    }
-    .dockleft-profile-actions {
-      flex-direction: row;
-      gap: 0.5rem;
-      margin-top: 0;
-      margin-left: auto;
-    }
-    .dockleft-action-btn {
-      width: auto;
-      min-width: 90px;
-      padding: 0.6rem 1.1rem;
-      font-size: 0.95rem;
-    }
-    .cards-container {
-      margin-left: 0;
-    }
+  .cards-container {
+    margin-left: 200px;
   }
+}
+
+@media (max-width: 700px) {
+  .dockleft {
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dockleft-profile-img-wrapper {
+    width: 55px;
+    height: 55px;
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  .dockleft-profile-info {
+    text-align: left;
+    flex: 1;
+  }
+
+  .dockleft-profile-actions {
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .dockleft-action-btn {
+    min-width: 90px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .cards-container {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}

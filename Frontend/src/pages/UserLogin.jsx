@@ -84,6 +84,8 @@ const LoginForm = () => {
       if (data.success) {
         notify("success", data.message);
         localStorage.setItem("usertoken", data.token);
+             localStorage.setItem("isVerified", data.user);
+          localStorage.setItem("userId", data.userId);
         navigate("/");
       }
     },

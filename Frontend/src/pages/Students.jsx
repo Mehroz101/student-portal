@@ -107,9 +107,16 @@ const students = [
   // Add 7 more dummy students here...
 ];
 
-
-const StatusBadge = ({ url="https://www.linkedin.com" }) => {
-  return <a  href={`${url}`} className={`bg-blue-100 px-2 py-1 rounded-xl`} target="_blank">linkedin</a>;
+const StatusBadge = ({ url = "https://www.linkedin.com" }) => {
+  return (
+    <a
+      href={`${url}`}
+      className={`bg-blue-100 px-2 py-1 rounded-xl`}
+      target="_blank"
+    >
+      linkedin
+    </a>
+  );
 };
 
 const StudentCard = ({ student }) => {
@@ -122,57 +129,82 @@ const StudentCard = ({ student }) => {
           className="user-image"
           width={100}
           height={100}
-/>
+        />
       </div>
       <div className="card-header">
         <h3>{student.name}</h3>
         <StatusBadge url={student.url} />
       </div>
-      <p><strong>Passing Year:</strong> {student.graduationYear}</p>
-      <p><strong>Description</strong> <br /> {student.desc}</p>
+      <p>
+        <strong>Passing Year:</strong> {student.graduationYear}
+      </p>
+      <p>
+        <strong>Description</strong> <br /> {student.desc}
+      </p>
     </div>
   );
 };
 
 // Responsive, left profile card with 3 vertical, clickable buttons, 100% height, fixed left, scrollable content
-const DockLeft = () => {
+const DockLeft = ({ mydata }) => {
   const navigate = useNavigate();
-  const handleProfile = () => alert('Profile Clicked');
-  const handleSettings = () => alert('Settings Clicked');
-  const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem('usertoken');
-    navigate('/login', { replace: true });
+  const handleProfile = () => {
+    navigate("/profile")
+  };
+  const handleSettings = () => alert("Settings Clicked");
+  const handleLogout = () => {
+    localStorage.removeItem("usertoken");
+    localStorage.removeItem("isVerified");
+    localStorage.removeItem("userId");
+
+    navigate("/userlogin", { replace: true });
   };
 
   return (
-    <div className="dockleft" style={{paddingTop:"120px",minHeight:"90vh"}}>
+    <div
+      className="dockleft"
+      style={{ paddingTop: "120px", minHeight: "90vh" }}
+    >
       <div className="dockleft-profile-img-wrapper">
         <img
-          src="https://randomuser.me/api/portraits/men/32.jpg"
+          src={`http://localhost:5000/${mydata?.img}`}
           alt="Profile"
           className="dockleft-profile-img"
         />
       </div>
       <div className="dockleft-profile-info">
-        <div className="dockleft-profile-name">USERNAME</div>
+        <div className="dockleft-profile-name">{mydata?.name}</div>
         <div className="dockleft-profile-affiliation">
           <span className="dockleft-icon" aria-label="Affiliation">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#4F8A8B" d="M12 3L2 9l10 6 10-6-10-6zm0 2.18L18.09 9 12 12.82 5.91 9 12 5.18zM4 10.09v2.18c0 2.97 3.13 5.43 8 5.43s8-2.46 8-5.43v-2.18l-8 4.8-8-4.8z"/></svg>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+              <path
+                fill="#4F8A8B"
+                d="M12 3L2 9l10 6 10-6-10-6zm0 2.18L18.09 9 12 12.82 5.91 9 12 5.18zM4 10.09v2.18c0 2.97 3.13 5.43 8 5.43s8-2.46 8-5.43v-2.18l-8 4.8-8-4.8z"
+              />
+            </svg>
           </span>
-          SEECS
+          {mydata?.department}
         </div>
         <div className="dockleft-profile-location">
           <span className="dockleft-icon" aria-label="Location">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#4F8A8B" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+              <path
+                fill="#4F8A8B"
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"
+              />
+            </svg>
           </span>
-          Pakistan
+          {mydata?.city}
         </div>
       </div>
       <div className="dockleft-profile-actions">
-        <button className="dockleft-action-btn" onClick={handleProfile}>Profile</button>
-        <button className="dockleft-action-btn" onClick={handleSettings}>Edit Profile</button>
-        <button className="dockleft-action-btn" onClick={handleLogout}>Logout</button>
+        <button className="dockleft-action-btn" onClick={handleProfile}>
+          Profile
+        </button>
+      
+        <button className="dockleft-action-btn" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
@@ -180,14 +212,29 @@ const DockLeft = () => {
 
 const StudentCards = () => {
   const [students, setStudents] = useState([]);
-  const {  isLoading } = useQuery({
+  const [myData, setMyData] = useState([]);
+  const token = localStorage.getItem("usertoken");
+  const userId = localStorage.getItem("userId");
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { isLoading } = useQuery({
     queryKey: ["allstudents"],
     queryFn: async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getallapproveduserdetail"
+          "http://localhost:5000/api/user/getallapproveduserdetail",
+          config
         );
         setStudents(response.data.data);
+        const userData = response.data.data?.filter(
+          (user) => user._id == userId
+        );
+        if (userData) {
+          setMyData(userData[0]);
+        }
         return response.data;
       } catch (error) {
         console.log(error.message);
@@ -196,12 +243,14 @@ const StudentCards = () => {
   });
 
   return (
-    <div className="cards-container " style={{marginTop:"100px"}}>
-      <DockLeft />
-      <div className="students-list">
-        {isLoading ? "Loading..." : students.map((student) => (
-          <StudentCard key={student._id} student={student} />
-        ))}
+    <div className="cards-container " style={{ marginTop: "100px" }}>
+      <DockLeft mydata={myData} />
+      <div className="students-list ">
+        {isLoading
+          ? "Loading..."
+          : students.map((student) => (
+              <StudentCard key={student._id} student={student} />
+            ))}
       </div>
     </div>
   );

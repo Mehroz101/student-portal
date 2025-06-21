@@ -1,4 +1,5 @@
 const Event = require("../models/Event");
+const User = require("../models/User");
 const UserData = require("../models/UserData");
 const fs = require("fs");
 const path = require("path");
@@ -135,7 +136,7 @@ const UpdateUserDetail = async (req, res) => {
           cnic,
           desc,
           img: req.file ? req.file.filename : existingUser.img,
-          status: "pending",
+          status: "approved",
         },
         { new: true }
       );
@@ -143,6 +144,7 @@ const UpdateUserDetail = async (req, res) => {
       user = await UserData.create({
         _id: userId,
         name,
+        userID: userId,
         fatherName,
         gender,
         DOB,
@@ -162,7 +164,9 @@ const UpdateUserDetail = async (req, res) => {
       });
     }
     if (!user) {
-      return res.status(404).send({ success: false, message: "User not found" });
+      return res
+        .status(404)
+        .send({ success: false, message: "User not found" });
     }
     res.status(200).send({
       success: true,
@@ -177,12 +181,22 @@ const UpdateUserDetail = async (req, res) => {
 const UpdateApprovalStatus = async (req, res) => {
   try {
     const { id, isapproved } = req.body;
-    console.log(id, isapproved);
+
     const updatedUser = await UserData.findByIdAndUpdate(
       id,
       { status: isapproved },
       { new: true }
     );
+    console.log(isapproved)
+    if (isapproved == "approved") {
+      await User.findByIdAndUpdate(
+        updatedUser.userID,
+        {
+          isVerified: true,
+        },
+        { new: true }
+      );
+    }
     if (updatedUser) {
       res.status(200).send({
         success: true,
@@ -338,5 +352,5 @@ module.exports = {
   getAllEvents,
   deleteEvent,
   AllStates,
-  BookmarkUserDetail
+  BookmarkUserDetail,
 };

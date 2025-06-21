@@ -10,6 +10,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 const Events = () => {
   const [showForm, setShowForm] = useState(false);
   const method = useForm();
+
   const addEventMutation = useMutation({
     mutationFn: async (data) => {
       try {
@@ -37,12 +38,20 @@ const Events = () => {
       }
     },
   });
-  const {data,isLoading,refetch} = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["allevents"],
     queryFn: async () => {
       try {
+        const token = localStorage.getItem("token");
+        console.log(token)
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
         const response = await axios.get(
-          "http://localhost:5000/api/user/allevent"
+          "http://localhost:5000/api/user/allevent",
+          config
         );
         console.log(response.data.data);
         return response.data;
@@ -51,35 +60,40 @@ const Events = () => {
       }
     },
   });
-const deleteMutation = useMutation({
-  mutationFn: async (data) => {
-    try {
-      const token = localStorage.getItem("token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios.post(
-        "http://localhost:5000/api/user/deleteevent",
-        data,
-        config
-      );
-      if (response.data.success === false) {
-        notify("error", response.data.message);
-      } else {
-        notify("success", response.data.message);
-        refetch();
+  const deleteMutation = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.post(
+          "http://localhost:5000/api/user/deleteevent",
+          data,
+          config
+        );
+        if (response.data.success === false) {
+          notify("error", response.data.message);
+        } else {
+          notify("success", response.data.message);
+          refetch();
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        notify("error", error.response.data.message || error.message);
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      notify("error", error.response.data.message || error.message);
-    }
-  },
-})
+    },
+  });
   const onsubmit = (data) => {
     console.log(data);
-    if(data.name == '' || data.description== '' || data.status== '' || data.file== ''){
+    if (
+      data.name == "" ||
+      data.description == "" ||
+      data.status == "" ||
+      data.file == ""
+    ) {
       return notify("warning", "Please fill all the fields");
     }
     const formData = new FormData();
@@ -92,38 +106,35 @@ const deleteMutation = useMutation({
 
   return (
     <>
-      <div className="events_page" >
+      <div className="events_page">
         <div className="page_top flex justify-content-between align-items-center">
           <h1>Events</h1>
           <Button label="Add Event" onClick={() => setShowForm(true)} />
         </div>
-        <div className="events_cards"  >
+        <div className="events_cards">
           {isLoading && <p>Loading...</p>}
           {data?.data?.map((event, index) => (
-            
-          <div className="event_card" key={event._id}>
-            <div className="event_img">
-              <img
-                src={"http://localhost:5000/" + event.image}
-                alt=""
-              />
-            </div>
-            <div className="event_detail">
-              <div className={`event_top `}>
-                <span className={`${event.status}`}>{event.status}</span>
-                <button className="delete_btn" onClick={() => deleteMutation.mutate({eventId:event._id})}>
-                <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
+            <div className="event_card" key={event._id}>
+              <div className="event_img">
+                <img src={"http://localhost:5000/" + event.image} alt="" />
               </div>
-              <h2>{event.name}</h2>
-              <p>
-                {event.description}
-              </p>
+              <div className="event_detail">
+                <div className={`event_top `}>
+                  <span className={`${event.status}`}>{event.status}</span>
+                  <button
+                    className="delete_btn"
+                    onClick={() =>
+                      deleteMutation.mutate({ eventId: event._id })
+                    }
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </div>
+                <h2>{event.name}</h2>
+                <p>{event.description}</p>
+              </div>
             </div>
-          </div>
           ))}
-
-       
         </div>
       </div>
       {showForm && (

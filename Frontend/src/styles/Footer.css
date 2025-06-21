@@ -3,6 +3,7 @@
   color: #e2e8f0; /* light slate */
   padding: 3rem 2rem 1rem;
   font-family: 'Segoe UI', sans-serif;
+  z-index: 10000;
 }
 
 .footer-content {

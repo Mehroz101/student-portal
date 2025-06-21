@@ -1,13 +1,19 @@
 // Footer.js
-import React from 'react';
 import '../styles/Footer.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Footer = () => {
+  const navigate = useNavigate()
   const scrollToId = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('usertoken');
+    localStorage.removeItem('isVerified');
+    localStorage.removeItem('userId');
+    navigate('/userlogin', { replace: true });
   };
   return (
     <footer className="footer">
@@ -25,6 +31,7 @@ const Footer = () => {
             <li onClick={() => scrollToId('events')}>Events</li>
             <li><Link to="/faq">FAQ</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
+            <li onClick={handleLogout}>Logout</li>
           </ul>
         </div>
         <div className="footer-section">

@@ -8,15 +8,13 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Navbar2 = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [usertoken, setUsertoken] = useState();
+  const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
-  const scrollToId = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
   useEffect(() => {
     const data = localStorage.getItem("usertoken");
+    const verified = localStorage.getItem("isVerified");
+    if (verified == "true") setIsVerified(true);
     if (data) {
       setUsertoken(data);
     }
@@ -25,7 +23,7 @@ const Navbar2 = () => {
     <nav className="navbar2">
       <div className="navbar-brand">
         <a href="/" className="brand-logo">
-         Alumni Hub
+          Alumni Hub
         </a>
       </div>
       <div className={`navbar-links ${isMobile ? "mobile" : ""}`}>
@@ -34,19 +32,19 @@ const Navbar2 = () => {
           <li className="dropdown">
             <span className="dropdown-toggle">About</span>
             <ul className="dropdown-menu">
-              <li onClick={() => navigate("/about/mission")}>Recetor Message</li>
+              <li onClick={() => navigate("/about/mission")}>
+                Recetor Message
+              </li>
               <li onClick={() => navigate("/about/team")}>About MNS UET</li>
               <li onClick={() => navigate("/about/history")}>OUR Team</li>
             </ul>
           </li>
           <li onClick={() => navigate("/alumnidirectory")}>Alumni Directory</li>
+          {isVerified && <li onClick={() => navigate("/students")}>Alumni</li>}
           {usertoken && (
             <>
-              <li onClick={() => navigate("/students")}>Alumni</li>
               <li onClick={() => navigate("/events")}>Events</li>
-              
             </>
-            
           )}
           <li className="dropdown">
             <span className="dropdown-toggle">Benefits </span>

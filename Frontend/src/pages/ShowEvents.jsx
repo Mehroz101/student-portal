@@ -7,7 +7,7 @@ const ShowEvents = () => {
         queryKey: ["allevents"],
         queryFn: async () => {
           try {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("usertoken");
             const config = {
               headers: {
                 Authorization: `Bearer ${token}`,

@@ -18,7 +18,9 @@ const Login = () => {
         }
         else{
           notify("success", response.data.message);
+          console.log()
           localStorage.setItem("token", response.data.token);
+     
           navigate("/dashboard");
         }
       } catch (error) {

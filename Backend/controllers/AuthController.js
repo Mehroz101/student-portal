@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken"); // Example of another require
 const User = require("../models/User");
 const signup = async (req, res) => {
   try {
-    console.log(req.body);
     const { email, password, cpassword } = req.body;
     if (password === cpassword) {
       const isUserExits = await Admin.findOne({ email });
@@ -49,6 +48,7 @@ const login = async (req, res) => {
           success: true,
           message: "User successfully logged in",
           token,
+          
         });
       } else {
         res.status(400).send({
@@ -118,6 +118,9 @@ const userSignin = async (req, res) => {
           success: true,
           message: "User successfully logged in",
           token,
+          user: user.isVerified ?? false,
+          userId:user._id
+
         });
       } else {
         res.status(400).send({
