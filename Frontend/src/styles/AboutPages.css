@@ -1,0 +1,35 @@
+/* AboutPages.css - Responsive styles for About dropdown pages */
+
+.about-page-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.about-page-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.about-page-container p {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .about-page-container {
+    padding: 1rem;
+  }
+  .about-page-container h1 {
+    font-size: 2rem;
+  }
+  .about-page-container p {
+    font-size: 1rem;
+  }
+}

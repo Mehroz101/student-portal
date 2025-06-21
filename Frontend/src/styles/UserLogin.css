@@ -97,6 +97,36 @@
     margin-bottom: 10px;
   }
   
+  .faq-link-btn {
+    padding: 6px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-right: 10px;
+  }
+  .faq-link-btn:hover, .faq-link-btn:focus {
+    background: #1746a0;
+  }
+  .Homelogin {
+    margin-left: 250px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), color 0.2s;
+    color: #2563eb;
+    padding: 0 10px;
+  }
+  .Homelogin:hover, .Homelogin:focus {
+    transform: scale(1.2) rotate(-10deg);
+    color: #1746a0;
+  }
   /* Responsive */
   @media (max-width: 768px) {
     .auth-container {
@@ -112,4 +142,20 @@
       padding: 20px;
     }
   }
-  
+  @media (max-width: 600px) {
+    .FAQ {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .faq-link-btn {
+      font-size: 0.95rem;
+      padding: 5px 12px;
+    }
+    .Homelogin {
+      font-size: 1.3rem;
+      padding: 0 4px;
+    }
+  }

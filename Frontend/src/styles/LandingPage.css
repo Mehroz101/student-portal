@@ -46,7 +46,7 @@
 .header-content {
   flex: 1 1 500px;
   padding: 20px 40px;
-  animation: fadeIn 2s ease-in-out;
+  animation: fadein 1.5s ease-in-out;
   text-align: left;
 }
 
@@ -72,7 +72,7 @@
   background-size: cover;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Responsive Layout */

@@ -31,15 +31,25 @@ const Navbar2 = () => {
       <div className={`navbar-links ${isMobile ? "mobile" : ""}`}>
         <ul className="align-items-center">
           <li onClick={() => navigate("/")}>Home</li>
-          <li onClick={() => scrollToId("about")}>About</li>
+          <li className="dropdown">
+            <span className="dropdown-toggle">About</span>
+            <ul className="dropdown-menu">
+              <li onClick={() => navigate("/about/mission")}>Recetor Message</li>
+              <li onClick={() => navigate("/about/team")}>About MNS UET</li>
+              <li onClick={() => navigate("/about/history")}>OUR Team</li>
+            </ul>
+          </li>
+          <li onClick={() => navigate("/alumnidirectory")}>Alumni Directory</li>
           {usertoken && (
             <>
               <li onClick={() => navigate("/students")}>Alumni</li>
               <li onClick={() => navigate("/events")}>Events</li>
+              
             </>
+            
           )}
           <li className="dropdown">
-            <span className="dropdown-toggle">Benefits</span>
+            <span className="dropdown-toggle">Benefits </span>
             <ul className="dropdown-menu ">
               <li onClick={() => navigate("/library")}>Job Posting</li>
               <li onClick={() => navigate("/lab")}>Our Societies</li>

@@ -23,6 +23,7 @@ const Footer = () => {
           <ul>
             <li onClick={() => scrollToId('about')}>About Us</li>
             <li onClick={() => scrollToId('events')}>Events</li>
+            <li><Link to="/faq">FAQ</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
           </ul>
         </div>

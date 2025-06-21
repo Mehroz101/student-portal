@@ -26,7 +26,11 @@ import Library from "./pages/Library";
 import Lab from "./pages/Lab";
 import Newsletter from "./pages/Newsletter";
 import Contact from "./pages/Contact";
-
+import Mission from "./pages/Mission";
+import Team from "./pages/Team";
+import History from "./pages/History";
+import FAQ from "./pages/FAQ";
+import AlumniDirectory from "./pages/AlumniDirectory";
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
@@ -78,7 +82,7 @@ function AppRoutes() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<LandingPage />} />
         <Route path="library" element={<Library />} />
-        <Route path="/lab" element={<Lab />} />
+        <Route path="lab" element={<Lab />} />
         <Route>
           <Route
             path="/profile"
@@ -86,9 +90,15 @@ function AppRoutes() {
           />
           <Route path="/students" element={<StudentCards />} />
           <Route path="/events" element={<ShowEvents />} />
+          <Route path="/alumnidirectory" element={<AlumniDirectory />} />
         </Route>
         <Route path="newsletter" element={<Newsletter />} />
         <Route path="contact" element={<Contact />} />
+        {/* About dropdown pages */}
+        <Route path="about/mission" element={<Mission />} />
+        <Route path="about/team" element={<Team />} />
+        <Route path="about/history" element={<History />} />
+        <Route path="faq" element={<FAQ />} />
       </Route>
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path={ROUTES.SIGNUP} element={<Signup />} />

@@ -92,8 +92,7 @@ const PopupForm = ({ data }) => {
       data.city == "" ||
       data.country == "" ||
       data.desc == "" ||
-      data.url == undefined || data.url == "" ||
-      !data.image || !data.image[0]
+      data.url == undefined || data.url == "" 
     ) {
       return notify("warning", "Please fill all the fields");
     }
