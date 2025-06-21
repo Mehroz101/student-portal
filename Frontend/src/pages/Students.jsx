@@ -146,7 +146,7 @@ const DockLeft = () => {
   };
 
   return (
-    <div className="dockleft" style={{paddingTop:"120px",minHeight:"80vh"}}>
+    <div className="dockleft" style={{paddingTop:"120px",minHeight:"90vh"}}>
       <div className="dockleft-profile-img-wrapper">
         <img
           src="https://randomuser.me/api/portraits/men/32.jpg"
@@ -171,7 +171,7 @@ const DockLeft = () => {
       </div>
       <div className="dockleft-profile-actions">
         <button className="dockleft-action-btn" onClick={handleProfile}>Profile</button>
-        <button className="dockleft-action-btn" onClick={handleSettings}>Settings</button>
+        <button className="dockleft-action-btn" onClick={handleSettings}>Edit Profile</button>
         <button className="dockleft-action-btn" onClick={handleLogout}>Logout</button>
       </div>
     </div>

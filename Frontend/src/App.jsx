@@ -30,6 +30,7 @@ import Mission from "./pages/Mission";
 import Team from "./pages/Team";
 import History from "./pages/History";
 import FAQ from "./pages/FAQ";
+import AlumniDirectory from "./pages/AlumniDirectory";
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
@@ -89,6 +90,7 @@ function AppRoutes() {
           />
           <Route path="/students" element={<StudentCards />} />
           <Route path="/events" element={<ShowEvents />} />
+          <Route path="/alumnidirectory" element={<AlumniDirectory />} />
         </Route>
         <Route path="newsletter" element={<Newsletter />} />
         <Route path="contact" element={<Contact />} />

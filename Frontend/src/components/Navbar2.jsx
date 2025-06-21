@@ -39,14 +39,17 @@ const Navbar2 = () => {
               <li onClick={() => navigate("/about/history")}>OUR Team</li>
             </ul>
           </li>
+          <li onClick={() => navigate("/alumnidirectory")}>Alumni Directory</li>
           {usertoken && (
             <>
               <li onClick={() => navigate("/students")}>Alumni</li>
               <li onClick={() => navigate("/events")}>Events</li>
+              
             </>
+            
           )}
           <li className="dropdown">
-            <span className="dropdown-toggle">Benefits</span>
+            <span className="dropdown-toggle">Benefits </span>
             <ul className="dropdown-menu ">
               <li onClick={() => navigate("/library")}>Job Posting</li>
               <li onClick={() => navigate("/lab")}>Our Societies</li>
