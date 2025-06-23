@@ -163,8 +163,14 @@ const RegisterForm = () => {
       <label>Email</label>
       <input
         type="email"
-        {...register("email", { required: "Email is required" })}
-        placeholder="Enter your email"
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[0-9]{4}-[A-Za-z]{2,}-[0-9]{1,3}@stu\.mnsuet\.edu\.pk$/,
+            message: "Email must be in the format 2021-CS-118@stu.mnsuet.edu.pk",
+          },
+        })}
+        placeholder="2021-CS-118@stu.mnsuet.edu.pk"
       />
       {errors.email && <p className="error">{errors.email.message}</p>}
 

@@ -33,7 +33,7 @@ const ProfileDetail = () => {
   if (!user) return <div style={{marginTop: 100}}>No user data found.</div>;
 
   return (
-    <div className="profile-detail-container">
+    <div className="profile-detail-container" style={{padding: '20px'}}>
       <div className="profile-detail-header">
         <img src={`http://localhost:5000/${user.img}`} alt={user.name} className="profile-detail-avatar" />
         <h2>Profile Details</h2>

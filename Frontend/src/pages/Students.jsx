@@ -249,7 +249,7 @@ const StudentCards = () => {
 
   return (
     <div className="cards-container " style={{ marginTop: "100px" }}>
-      <DockLeft mydata={myData} />
+      {myData?.isshown && <DockLeft mydata={myData} />}
       <div className="students-list ">
         {isLoading
           ? "Loading..."
