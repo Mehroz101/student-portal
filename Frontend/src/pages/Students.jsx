@@ -110,7 +110,7 @@ const students = [
 const StatusBadge = ({ url = "https://www.linkedin.com" }) => {
   return (
     <a
-      href={`${url}`}
+        href={url && (url.startsWith('http') ? url : `https://${url.replace(/^https?:\/\//, '')}`)}
       className={`bg-blue-100 px-2 py-1 rounded-xl`}
       target="_blank"
     >
@@ -151,7 +151,9 @@ const DockLeft = ({ mydata }) => {
   const handleProfile = () => {
     navigate("/profile")
   };
-  const handleSettings = () => alert("Settings Clicked");
+  const handleProfileDetail = () =>{
+    navigate("/profiledetail");
+  };
   const handleLogout = () => {
     localStorage.removeItem("usertoken");
     localStorage.removeItem("isVerified");
@@ -200,6 +202,9 @@ const DockLeft = ({ mydata }) => {
       <div className="dockleft-profile-actions">
         <button className="dockleft-action-btn" onClick={handleProfile}>
           Profile
+        </button>
+        <button className="dockleft-action-btn" onClick={handleProfileDetail}>
+          Profile Detail
         </button>
       
         <button className="dockleft-action-btn" onClick={handleLogout}>

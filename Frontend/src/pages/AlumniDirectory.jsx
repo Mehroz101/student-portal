@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/AlumniDirectory.css";
 import vcCon from "../assets/vc-con.jpg";
 import Shehraz from "../assets/Shehraz.jpg";

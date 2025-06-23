@@ -189,13 +189,14 @@ const UpdateApprovalStatus = async (req, res) => {
     );
     console.log(isapproved)
     if (isapproved == "approved") {
-      await User.findByIdAndUpdate(
+     const res= await User.findByIdAndUpdate(
         updatedUser.userID,
         {
           isVerified: true,
         },
         { new: true }
       );
+      console.log(res);
     }
     if (updatedUser) {
       res.status(200).send({
