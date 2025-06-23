@@ -51,7 +51,7 @@ const Navbar2 = () => {
           <li className="dropdown">
             <span className="dropdown-toggle">About</span>
             <ul className="dropdown-menu">
-              <li onClick={() => navigate("/about/mission")}>Recetor Message</li>
+              <li onClick={() => navigate("/about/mission")}>VC Message</li>
               <li onClick={() => navigate("/about/team")}>About MNS UET</li>
               <li onClick={() => navigate("/about/history")}>OUR Team</li>
             </ul>
