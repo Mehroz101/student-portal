@@ -221,7 +221,7 @@ export default function StudentRequests() {
           header="Img"
           body={(rowData) => (
             <img
-              src={`http://localhost:5000/${rowData.img}`}
+              src={`http://localhost:5000/uploads/${rowData.img}`}
               alt={rowData.name}
               className="user-image"
               width={50}

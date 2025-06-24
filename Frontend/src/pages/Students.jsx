@@ -248,16 +248,35 @@ const StudentCards = () => {
   });
 
   return (
-    <div className="cards-container " style={{ marginTop: "100px" }}>
+    <div className="cards-container" style={{ marginTop: "100px", display: "flex", gap: "24px" }}>
       {myData?.isshown && <DockLeft mydata={myData} />}
-      <div className="students-list ">
+      <div className="students-list" style={{ flex: 1 }}>
         {isLoading
           ? "Loading..."
           : students.map((student) => (
               <StudentCard key={student._id} student={student} />
             ))}
       </div>
+      {/* Right Side Slider (Static Data) */}
+      <div className="students-slider" style={{ width: "250px", minWidth: 200, background: "#f8fafc", borderRadius: 14, boxShadow: "0 2px 12px rgba(30,41,59,0.07)", padding: 12, height: "fit-content", position: "fixed", right: 18, top: 120, maxHeight: '80vh', overflowY: 'auto', zIndex: -10 }}>
+        <h3 style={{ fontWeight: 700, fontSize: "1rem", marginBottom: 10, color: "#2563eb" }}>University Highlights</h3>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: '0.93rem' }}>
+          <li style={{ marginBottom: 10 }}>
+            <strong>Top CGPA:</strong> Sara Khan (3.9)
+          </li>
+          <li style={{ marginBottom: 10 }}>
+            <strong>Recent Achiever:</strong> Umar Farooq
+          </li>
+          <li style={{ marginBottom: 10 }}>
+            <strong>Upcoming Event:</strong> Alumni Meetup
+          </li>
+          <li style={{ marginBottom: 0 }}>
+            <strong>Contact:</strong> student.affairs@mnsuet.edu.pk
+          </li>
+        </ul>
+      </div>
     </div>
+    
   );
 };
 
