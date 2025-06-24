@@ -74,6 +74,7 @@ const Navbar2 = () => {
             </ul>
           </li>
           <li onClick={() => navigate("/contact")}>Contact Us</li>
+          {/* ------------------------------------------------------------------------------------- */}
           {/* {usertoken ? (
             <li
               onClick={() => navigate("/profile")}
@@ -89,6 +90,10 @@ const Navbar2 = () => {
               Login
             </li>
           )} */}
+
+      {/* /--------------------------------------------------------------------------------// */}
+
+      
           {usertoken  ? (
             <li className="dropdown profile-dropdown">
               <span className="dropdown-toggle flex items-center gap-2">

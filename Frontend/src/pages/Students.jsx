@@ -201,11 +201,11 @@ const DockLeft = ({ mydata }) => {
       </div>
       <div className="dockleft-profile-actions">
         <button className="dockleft-action-btn" onClick={handleProfile}>
-          Profile
+          Edit Profile
         </button>
-        <button className="dockleft-action-btn" onClick={handleProfileDetail}>
+        {/* <button className="dockleft-action-btn" onClick={handleProfileDetail}>
           Profile Detail
-        </button>
+        </button> */}
       
         <button className="dockleft-action-btn" onClick={handleLogout}>
           Logout
