@@ -18,7 +18,7 @@ import {
 
 const PopupForm = ({ data }) => {
   const backendImageUrl = data?.data?.img
-    ? `http://localhost:5000/${data.data.img}`
+    ? `http://localhost:5000/uploads/${data.data.img}`
     : null;
 
   const [previewImage, setPreviewImage] = useState(backendImageUrl);
