@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Mission.css";
-import vcImg from "../assets/vc-con.jpg";
+import vcImg from "../assets/vc-con.png";
 
 const vcValues = [
   {
@@ -31,16 +31,19 @@ const Mission = () => (
       <img src={vcImg} alt="Vice Chancellor" className="vc-message-img" />
       <div className="vc-message-content">
         <h1>Vice Chancellor's Message</h1>
-        <h2>Prof. Dr. Muhammad Aslam, Vice Chancellor</h2>
+        <h2>Prof. Dr. Engr. Tahir Sultan Vice Chancellor</h2>
         <p>
-          Welcome to MNS UET! As Vice Chancellor, I am proud to lead an institution dedicated to academic excellence, innovation, and holistic student development. Our mission is to empower students to become leaders, innovators, and responsible citizens who contribute to society and the world.
+It gives me great pleasure to share a few words about the journey and vision of Muhammad Nawaz Sharif University of Engineering and Technology (MNS-UET), Multan. As we step forward in an era shaped by the Sustainable Development Goals (SDGs), our university remains committed to nurturing human values, academic excellence, and meaningful research anchored in ethics and social responsibility.
+
+Engineers today are more than technical professionals; they are innovators, problem-solvers, and nation-builders. At MNS-UET, we believe in empowering our students to contribute positively to fields vital for Pakistan’s progress, such as smart infrastructure, digital transformation, environmental sustainability, energy efficiency, and healthcare technologies.
+
         </p>
         <p>
-          At MNS UET, we foster a vibrant learning environment, encourage research and creativity, and value diversity and inclusion. We are committed to providing opportunities for personal and professional growth, and to building strong connections with our alumni and partners.
-        </p>
+Although we are a relatively young institution, MNS-UET is rapidly evolving into a center of excellence, particularly for the people of South Punjab. The development of our modern campus with advanced labs, learning spaces, a central library, and student facilities reflects our character, thrive together.
+
+Our faculty is actively engaged in high-quality research and scholarly activities, and we are continuously working to strengthen our graduate programs to meet international standards. We also place great emphasis on forging strong connections between academia and industry, ensuring our graduates are well-prepared to take on real-world challenges with confidence and skill.        </p>
         <p>
-          I invite you to explore our university, engage with our community, and join us in our pursuit of knowledge, discovery, and service.
-        </p>
+I invite you, students, researchers, industry partners, and the broader community to join us in this journey of growth, service, and transformation.        </p>
       </div>
     </div>
     <div className="vc-values">

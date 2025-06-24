@@ -5,15 +5,16 @@ import wakeel from "../assets/wakeel.jpg";
 import sohail from "../assets/sohail.jpg";
 import nadeem from "../assets/nadeem.jpg";
 import Abuzar from "../assets/Abuzar.jpg";
-import Hira from "../assets/Hira.jpg";
-import ayni from "../assets/ayni.jpg";
 import Asifg from "../assets/Asifg.jpg";
-import maya from "../assets/maya.jpg";
-import sidra from "../assets/sidra.jpg";
 import Shehraz from "../assets/Shehraz.jpg";
 import Saad from "../assets/Saad.jpg";
 import Nisar from "../assets/Nisar.jpg";
 import Ammar from "../assets/Ammar.jpg";
+import fraz from "../assets/fraz.jpg";
+import ubaid from "../assets/ubaid.jpg";
+import hanan from "../assets/hanan.jpg";
+import wajaht from "../assets/wajaht.jpg";
+ 
 
 const alumniData = [
   {
@@ -90,21 +91,21 @@ const alumniData = [
   },
   {
     id: 9,
-    name: "Raahat-E-Zeest",
-    image: Hira,
+    name: "Muhammad fraz",
+    image: fraz,
     graduationYear: "2021",
-    profession: "Professor, UET",
+    profession: "Team Lead / Data Operator at Nexis",
     location: "Islamabad, Pakistan",
-    about: "Raahat-E-Zeest is a respected academic and has published research in renewable energy.",
+    about: "Muhammad Fraz is a respected academic and has published research in renewable energy.",
   },
   {
     id: 10,
-    name: "Ayni Khan",
-    image: ayni,
-    graduationYear: "2021",
-    profession: "MERN Stack Developer, Techverx",
+    name: "Ubaidullah Tanveer",
+    image: ubaid,
+    graduationYear: "2022",
+    profession: "internee",
     location: "Sahiwal, Pakistan",
-    about: "Ayni specializes in sustainable architecture and green building design.",
+    about: "Ubaidullah Tanveer specializes in sustainable architecture and green building design.",
   },
   {
     id: 11,
@@ -135,21 +136,21 @@ const alumniData = [
   },
   {
     id: 14,
-    name: "Kubra Iqbal",
-    image: maya,
+    name: "Abdul Hanan",
+    image: hanan,
     graduationYear: "2021",
     profession: "Director, Engro Corp",
     location: "Karachi, Pakistan",
-    about: "Kubra Iqbal is a director at Engro and a mentor for young professionals.",
+    about: "Abdul Hanan is a director at Engro and a mentor for young professionals.",
   },
   {
     id: 15,
-    name: "Sadia Mir",
-    image:sidra ,
-    graduationYear: "2021",
+    name: "Syed Muhammad Wajahat Haider Naqvi",
+    image: wajaht,
+    graduationYear: "2022",
     profession: "Chief Scientist, CERN",
     location: "Multan, Pakistan",
-    about: "Sidra leads a research team at CERN and is a pioneer in particle physics.",
+    about: "Syed Muhammad Wajahat Haider Naqvi leads a research team at CERN and is a pioneer in particle physics.",
   },
   // Add more alumni as needed
 ];
@@ -157,7 +158,7 @@ const alumniData = [
 const AlumniDirectory = () => {
   return (
     <div className="alumni-directory-container" style={{ paddingTop: "100px", minHeight: "80vh" }}>
-      <h1 className="alumni-title">Alumni Directory</h1>
+      <h1 className="alumni-title">Directory</h1>
       <div className="alumni-grid">
         {alumniData.map((alumni, idx) => (
           <div className="alumni-card animated-card" key={alumni.id} style={{ animationDelay: `${idx * 0.1}s` }}>

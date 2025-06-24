@@ -124,7 +124,7 @@ const StudentCard = ({ student }) => {
     <div className="student-card">
       <div className="userImg">
         <img
-          src={`http://localhost:5000/${student.img}`}
+          src={`http://localhost:5000/uploads/${student.img}`}
           alt={student.name}
           className="user-image"
           width={100}
@@ -169,7 +169,7 @@ const DockLeft = ({ mydata }) => {
     >
       <div className="dockleft-profile-img-wrapper">
         <img
-          src={`http://localhost:5000/${mydata?.img}`}
+          src={`http://localhost:5000/uploads/${mydata?.img}`}
           alt="Profile"
           className="dockleft-profile-img"
         />
@@ -203,9 +203,9 @@ const DockLeft = ({ mydata }) => {
         <button className="dockleft-action-btn" onClick={handleProfile}>
           Edit Profile
         </button>
-        {/* <button className="dockleft-action-btn" onClick={handleProfileDetail}>
+        <button className="dockleft-action-btn" onClick={handleProfileDetail}>
           Profile Detail
-        </button> */}
+        </button>
       
         <button className="dockleft-action-btn" onClick={handleLogout}>
           Logout

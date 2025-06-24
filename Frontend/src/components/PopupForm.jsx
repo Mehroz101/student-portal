@@ -121,7 +121,7 @@ const PopupForm = ({ data }) => {
   const handleBack = () => setStep(1);
 
   return (
-    <div className="popup-overlay">
+    <div className="popup-overlay" style={{ padding: "20px" , marginTop: "100px"}}>
       <div className="popup-content">
         <h2>Add Details</h2>
         <form onSubmit={handleSubmit(submitHandler)}>

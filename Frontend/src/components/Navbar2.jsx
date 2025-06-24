@@ -31,7 +31,7 @@ const Navbar2 = () => {
         })
         .then((res) => {
           if (res.data && res.data.data && res.data.data.img) {
-            setProfileImg(`http://localhost:5000/${res.data.data.img}`);
+            setProfileImg(`http://localhost:5000/uploads/${res.data.data.img}`);
             setUsername(res.data.data.name);
           }
         })
@@ -56,7 +56,7 @@ const Navbar2 = () => {
               <li onClick={() => navigate("/about/history")}>OUR Team</li>
             </ul>
           </li>
-          <li onClick={() => navigate("/alumnidirectory")}>Alumni Directory</li>
+          <li onClick={() => navigate("/alumnidirectory")}>Directory</li>
           {(usertoken && isVerified) && (
             <>
               <li onClick={() => navigate("/students")}>Alumni</li>

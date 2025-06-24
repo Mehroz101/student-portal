@@ -32,7 +32,7 @@ import History from "./pages/History";
 import FAQ from "./pages/FAQ";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ProtectedStudentRoute from "./context/ProtectedStudentRoutes";
-// import ProfileDetail from "./pages/ProfileDetail";
+import ProfileDetail from "./pages/ProfileDetail";
 function Fallback({ error }) {
   const regex = /\((.*?):\d+:\d+\)/;
   const match = error.stack.match(regex);
@@ -91,10 +91,10 @@ function AppRoutes() {
             element={<ProtectedUserRoute element={<Profile />} />}
           />
 
-          {/* <Route
+          <Route
             path="/profiledetail"
             element={<ProtectedUserRoute element={<ProfileDetail />} />}
-          /> */}
+          />
           
           <Route
             path="/students"

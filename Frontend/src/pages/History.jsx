@@ -28,29 +28,23 @@ const History = () => (
   <div style={{ paddingTop: "100px", minHeight: "80vh", background: "#f8fbff" }}>
     <div className="team-hero" style={{ boxShadow: '0 4px 32px #1976d222', borderRadius: 24, background: 'linear-gradient(120deg, #f8fbff 0%, #e3f0ff 100%)' }}>
       <div className="team-hero-content" style={{ width: '100%' }}>
-        <h1>History of MNS UET</h1>
+        <h1>OUR TEAM</h1>
         <p>
-          Muhammad Nawaz Sharif University of Engineering & Technology (MNS UET), Multan, was established in 2012 to address the growing need for quality engineering education in South Punjab. The university began with a vision to create a center of excellence in engineering, technology, and applied sciences.
-        </p>
-        <p>
-          <strong>Traditional Roots:</strong> MNS UET is built on the rich cultural and educational heritage of Multan, a city known for its tradition, learning, and innovation. The university blends modern engineering education with the values and traditions of the region, fostering a unique environment for growth and discovery.
-        </p>
-        <p>
-          <strong>Milestones:</strong>
-        </p>
-        <ul>
-          <li>2012: Foundation stone laid and first academic session launched</li>
-          <li>2014: Inauguration of state-of-the-art laboratories and research centers</li>
-          <li>2016: First convocation and graduation of pioneer batch</li>
-          <li>2018: Expansion of academic programs and industry partnerships</li>
-          <li>2022: Recognition as a leading engineering university in South Punjab</li>
-        </ul>
-        <p>
-          Over the years, MNS UET has grown into a vibrant academic community, attracting talented students and faculty from across the country. The university is committed to upholding its traditions while embracing innovation and progress.
-        </p>
-        <p>
-          Today, MNS UET stands as a symbol of progress, tradition, and innovation, preparing graduates to contribute to the nation and the world.
-        </p>
+  <strong>Our MERN Stack Developer Team:</strong> At the core of our digital innovation lies a passionate and skilled MERN Stack development team, responsible for building dynamic, full-stack web applications using MongoDB, Express.js, React, and Node.js.
+</p>
+<p>
+  Our developers bring modern solutions to the university's digital landscape—creating portals, alumni platforms, and real-time systems that enhance accessibility, interactivity, and performance for students, faculty, and administrators.
+</p>
+<ul>
+  <li><strong>MongoDB:</strong> Our team utilizes MongoDB to efficiently manage and scale large volumes of academic and administrative data.</li>
+  <li><strong>Express.js & Node.js:</strong> We build robust backend services and RESTful APIs to power seamless communication between the front end and the database.</li>
+  <li><strong>React.js:</strong> The team leverages React to craft responsive, intuitive, and component-based user interfaces for web applications.</li>
+  <li><strong>Team Collaboration:</strong> Our developers work closely with UI/UX designers, testers, and stakeholders to deliver secure and user-friendly platforms.</li>
+</ul>
+<p>
+  Through innovation, collaboration, and continuous learning, the MERN Stack team contributes to the university’s mission of technological excellence and digital transformation.
+</p>
+
       </div>
     </div>
     <div style={{ maxWidth: 1100, margin: '48px auto 0 auto', padding: 24 }}>

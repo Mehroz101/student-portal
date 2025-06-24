@@ -39,7 +39,7 @@ const UserLogin = () => {
               : "Join us by creating your account"}
           </p>
 
-          {isLogin ? <LoginForm /> : <RegisterForm />}
+          {isLogin ? <LoginForm /> : <RegisterForm setIsLogin={setIsLogin} />}
 
           <p className="toggle-auth">
             {isLogin ? (
@@ -86,7 +86,7 @@ const LoginForm = () => {
         localStorage.setItem("usertoken", data.token);
              localStorage.setItem("isVerified", data.user);
           localStorage.setItem("userId", data.userId);
-        navigate("/");
+        navigate("/alumnidirectory");
       }
     },
     onError: (error) => {
@@ -120,12 +120,14 @@ const LoginForm = () => {
     </form>
   );
 };
-const RegisterForm = () => {
+const RegisterForm = ({ setIsLogin }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+  const [confirmError, setConfirmError] = useState("");
   const signupMutation = useMutation({
     mutationFn: async (data) => {
       const response = await axios.post(
@@ -135,9 +137,7 @@ const RegisterForm = () => {
       return response.data;
     },
     onSuccess: (data) => {
-      console.log(data, "responsed data");
       if (data.success == true) {
-        console.log("entered", data.message);
         notify("success", data.message);
         setIsLogin(true);
       }
@@ -147,7 +147,11 @@ const RegisterForm = () => {
     },
   });
   const onSubmit = (data) => {
-    console.log("Registration Data:", data);
+    setConfirmError("");
+    if (data.password !== data.confirmPassword) {
+      setConfirmError("Passwords do not match");
+      return;
+    }
     signupMutation.mutate(data);
   };
 
@@ -167,10 +171,10 @@ const RegisterForm = () => {
           required: "Email is required",
           pattern: {
             value: /^[0-9]{4}-[A-Za-z]{2,}-[0-9]{1,3}@stu\.mnsuet\.edu\.pk$/,
-            message: "Email must be in the format @stu.mnsuet.edu.pk",
+            message: "Email must be in the format 2021-CS-118@stu.mnsuet.edu.pk",
           },
         })}
-        placeholder="@stu.mnsuet.edu.pk"
+        placeholder="2021-CS-118@stu.mnsuet.edu.pk"
       />
       {errors.email && <p className="error">{errors.email.message}</p>}
 
@@ -183,6 +187,17 @@ const RegisterForm = () => {
         placeholder="Create a password"
       />
       {errors.password && <p className="error">{errors.password.message}</p>}
+
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        {...register("confirmPassword", {
+          required: "Please confirm your password",
+        })}
+        placeholder="Confirm your password"
+      />
+      {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
+      {confirmError && <p className="error">{confirmError}</p>}
 
       <button type="submit">Register</button>
     </form>

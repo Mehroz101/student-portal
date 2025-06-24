@@ -33,7 +33,7 @@ const ShowEvents = () => {
                 <div className="event_card" key={event._id}>
                   <div className="event_img">
                     <img
-                      src={"http://localhost:5000/" + event.image}
+                      src={"http://localhost:5000/uploads/" + event.image}
                       alt=""
                     />
                   </div>

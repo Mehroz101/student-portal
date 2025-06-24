@@ -1,54 +1,70 @@
 import React, { useState } from 'react';
 import '../styles/Library.css';
+import cle from '../assets/cle.jpg';
+import marcom from '../assets/marcom.jpg';
+import hon from '../assets/hon.jpg';
+import ir  from '../assets/ir.jpg';
+import musk from '../assets/musk.jpg';
+import social from '../assets/social.jpg';
+import junior from '../assets/junior.jpg';
+import datasci from '../assets/datasci.jpg';
 
 const booksData = [
   {
     id: 1,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    cover: 'https://covers.openlibrary.org/b/id/7222246-L.jpg',
-    desc: 'A classic novel of the Roaring Twenties, exploring themes of wealth, love, and the American Dream.',
-    download: 'https://www.planetebook.com/free-ebooks/the-great-gatsby.pdf'
+    title: 'CLE Summer Internship Program',
+    cover: cle,
+    desc: 'A classic Center for Language Engineering is a research lab conducting research and development in linguistic and computational aspects of languages, specifically of Pakistan and developing Asia. of the Roaring Twenties, exploring themes of wealth, love, and the American Dream.',
+    link: 'jobs.cle@kics.edu.pk',
   },
   {
     id: 2,
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    cover: 'https://covers.openlibrary.org/b/id/8228691-L.jpg',
-    desc: 'A powerful story about racial injustice and childhood innocence in the Deep South.',
-    download: 'https://www.pdfdrive.com/download.pdf?id=15755411&h=6e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e&u=cache&ext=pdf'
+    title: 'NUST Marketing & Communications invites ',
+    cover: marcom,
+    desc: 'Familiarise yourself with the fundamentals, gain hands-on experience, and avail the opportunity to work alongside dynamic professionals.',
+    link: 'https://lnkd.in/dCbE4nvE ',
   },
   {
     id: 3,
-    title: '1984',
-    author: 'George Orwell',
-    cover: 'https://covers.openlibrary.org/b/id/7222246-L.jpg',
-    desc: 'A dystopian novel that delves into the dangers of totalitarianism and extreme political ideology.',
-    download: 'https://www.planetebook.com/free-ebooks/1984.pdf'
+    title: 'Pakistan Internship Program 2025',
+    cover: hon,
+    desc: 'A Applications are now LIVE for the FrieslandCampina Engro Pakistan Internship Program 2025! novel that delves into the dangers of totalitarianism and extreme political ideology.',
+    link: 'https://lnkd.in/dX3jE4y4 ',
   },
   {
     id: 4,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    cover: 'https://covers.openlibrary.org/b/id/8231856-L.jpg',
-    desc: 'A romantic novel that also critiques the British landed gentry at the end of the 18th century.',
-    download: 'https://www.planetebook.com/free-ebooks/pride-and-prejudice.pdf'
+    title: '🌟 Special Internship Program for Fresh Graduates! 🎓',
+    cover: ir,
+    desc: 'IR Solutions is thrilled to launch itsMonth Internship Program Leading to Job designed for fresh graduates eager to dive into real world challenges and thrive in a professional, tech-driven environment. 🚀Here’s your chance to learn, contribute, and secure a full-time job based on your performance! 🙌',
+    link: 'www.irsolutions.tech',
   },
   {
     id: 5,
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    cover: 'https://covers.openlibrary.org/b/id/6979861-L.jpg',
-    desc: 'A fantasy adventure that sets the stage for the epic Lord of the Rings trilogy.',
-    download: 'https://www.pdfdrive.com/download.pdf?id=15755411&h=6e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e&u=cache&ext=pdf'
+    title: '🌟 Ready to Launch Your Career?',
+    cover: musk,
+    desc: 'The wait is over! 🚀 Our Internship Program 2025 is officially open — and it’s designed for the bold, the curious, and the career-driven. If you re a student or a fresh graduate looking to turn potential into progress, this is your moment.',
+    link: 'https://lnkd.in/d4VP8utk',
   },
   {
     id: 6,
     title: 'The Catcher in the Rye',
-    author: 'J.D. Salinger',
-    cover: 'https://covers.openlibrary.org/b/id/8231996-L.jpg',
-    desc: 'A coming-of-age novel that explores teenage angst and alienation.',
-    download: 'https://www.pdfdrive.com/download.pdf?id=15755411&h=6e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e&u=cache&ext=pdf'
+    cover: social,
+    desc: 'About the Role Join us as a Content Creator Intern to ideate, research, and craft engaging content for digital platforms. Ideal for students who are creative, passionate about storytelling, and eager to gain real-world experience in content, branding, and digital media.',
+    link: 'https://lnkd.in/ddn7SVWz ',
+  },
+  {
+    id: 7,
+    title: 'Junior Software Developer (C# / ERP Systems)',
+    cover: junior,
+    desc: 'We are looking for a motivated and passionate Junior Software Developer with strong fundamentals in Object-Oriented Programming (OOP) and C# to join our growing development team. This is a full-time opportunity ideal for fresh graduates who are eager to begin their careers in software development, particularly in the field of ERP solutions and business process automation.',
+    link: 'https://www.glassdoor.com/Job/pakistan-computer-science-internship-jobs-SRCH_IL.0,8_IN192_KO9,36.htm',
+  },
+  {
+    id: 8,
+    title: 'Data Scientist Internship',
+    cover: datasci,
+    desc: 'Devfum leverages a specialized blend of web technologies, artificial intelligence (AI), and extended reality (XR) solutions to automate business processes, enhance customer experiences, and drive sustainable growth for businesses worldwide.',
+    link: 'https://www.glassdoor.com/Job/pakistan-computer-science-internship-jobs-SRCH_IL.0,8_IN192_KO9,36.htm',
   },
 ];
 
@@ -57,8 +73,7 @@ const Library = () => {
 
   const filteredBooks = booksData.filter(
     (book) =>
-      book.title.toLowerCase().includes(search.toLowerCase()) ||
-      book.author.toLowerCase().includes(search.toLowerCase())
+      book.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -66,7 +81,7 @@ const Library = () => {
       <div className="library-search-bar">
         <input
           type="text"
-          placeholder="Search books by title or author..."
+          placeholder="Search books by title..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
@@ -81,10 +96,14 @@ const Library = () => {
               <img className="book-cover" src={book.cover} alt={book.title} />
               <div className="book-info">
                 <div className="book-title">{book.title}</div>
-                <div className="book-author">by {book.author}</div>
                 <div className="book-desc">{book.desc}</div>
-                <a className="download-btn" href={book.download} target="_blank" rel="noopener noreferrer" download>
-                  Download PDF
+                <a
+                  className="download-btn"
+                  href={book.link.startsWith('http') ? book.link : `https://${book.link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit Resource
                 </a>
               </div>
             </div>
