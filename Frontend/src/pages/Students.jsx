@@ -127,7 +127,7 @@ const StudentCard = ({ student }) => {
           src={student.img ? `http://localhost:5000/uploads/${student.img}` : require('../assets/bannerImg.png')}
           alt={student.name}
           className="user-image"
-          style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: '10px', border: '2px solid #e0e7ef', background: '#f3f4f6' }}
+          style={{ width: 200, height: 150, objectFit: 'cover', borderRadius: '10px', border: '2px solid #e0e7ef', background: '#f3f4f6' }}
         />
       </div>
       <div className="card-header">
