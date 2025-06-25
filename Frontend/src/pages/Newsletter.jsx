@@ -5,19 +5,21 @@ import img1 from "../assets/bannerImg.png";
 import img2 from "../assets/datasci.jpg";
 import img3 from "../assets/Honhaar.jpg";
 import img4 from "../assets/ir.jpg";
+import junior from "../assets/junior.jpg";
+import hon from "../assets/hon.jpg";
 
 const blogPosts = [
   {
     id: 1,
     title: "Convocation 2025 Announced",
-    image: img1,
+    image: junior,
     desc: "The annual convocation will be held in June 2025. All graduates are invited to register and participate in the ceremony.",
     date: "June 2025"
   },
   {
     id: 2,
     title: "New Research Lab Inaugurated",
-    image: img2,
+    image: hon ,
     desc: "A state-of-the-art research lab has been inaugurated, offering new opportunities for innovation and collaboration.",
     date: "May 2025"
   },
@@ -63,7 +65,7 @@ const Newsletter = () => {
   return (
     <div className="newsletter-page" style={{ paddingTop: "100px", minHeight: "80vh" }}>
       {/* Hero Section */}
-      <section className="newsletter-hero">
+      {/* <section className="newsletter-hero">
         <div className="newsletter-hero-content">
           <h1>News & Letters</h1>
           <p>
@@ -73,7 +75,7 @@ const Newsletter = () => {
         <div className="newsletter-hero-img">
           <img src={newsletterHero} alt="Newsletter Hero" />
         </div>
-      </section>
+      </section> */}
 
       {/* Search Bar */}
       <div className="newsletter-search-bar">
@@ -88,7 +90,7 @@ const Newsletter = () => {
 
       {/* Blog Section */}
       <section className="newsletter-blog-section">
-        <h2>Latest Blogs</h2>
+        <h2>News Letter</h2>
         <div className="newsletter-blog-grid">
           {filteredBlogs.length === 0 ? (
             <div className="no-news">No blogs found.</div>
@@ -108,14 +110,14 @@ const Newsletter = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="newsletter-gallery-section">
+      {/* <section className="newsletter-gallery-section">
         <h2>Gallery</h2>
         <div className="newsletter-gallery-grid">
           {galleryImages.map((img, idx) => (
             <img className="newsletter-gallery-img" src={img} alt={`Gallery ${idx+1}`} key={idx} />
           ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

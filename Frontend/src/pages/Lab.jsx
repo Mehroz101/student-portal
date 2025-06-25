@@ -58,7 +58,7 @@ const Lab = () => {
 			style={{ paddingTop: "100px", minHeight: "80vh" }}
 		>
 			{/* Hero Section */}
-			<section className="lab-hero">
+			{/* <section className="lab-hero">
 				<div className="lab-hero-content">
 					<h1>Modern Labs at MNS-UET</h1>
 					<p>
@@ -70,7 +70,7 @@ const Lab = () => {
 				<div className="lab-hero-img">
 					<img src={labHero} alt="Lab Hero" />
 				</div>
-			</section>
+			</section> */}
 
 			{/* Search Bar */}
 			<div className="lab-search-bar">

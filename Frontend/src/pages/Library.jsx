@@ -86,7 +86,9 @@ const Library = () => {
           onChange={e => setSearch(e.target.value)}
         />
         <span role="img" aria-label="search" style={{marginLeft:8, color:'#888', fontSize:'1.2rem'}}>🔍</span>
+
       </div>
+      <h1 style={{textAlign:"center", margin:"40px 0"}}>Job Posting</h1>
       <div className="library-books-grid">
         {filteredBooks.length === 0 ? (
           <div style={{gridColumn:'1/-1', textAlign:'center', color:'#888', fontSize:'1.1rem', padding:'40px 0'}}>No books found.</div>

@@ -107,7 +107,7 @@ const Navbar2 = () => {
                 {username || "Profile"}
               </span>
               <ul className="dropdown-menu">
-                <li onClick={() => navigate("/profile")}>Dashboard</li>
+                <li onClick={() => navigate("/profile")}>Edit Profile</li>
                 <li onClick={() => navigate("/profiledetail")}>Profile Detail</li>
               </ul>
             </li>
