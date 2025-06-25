@@ -122,17 +122,16 @@ const StatusBadge = ({ url = "https://www.linkedin.com" }) => {
 const StudentCard = ({ student }) => {
   return (
     <div className="student-card">
-      <div className="userImg">
+      <div className="userImg" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 120, marginBottom: 10 }}>
         <img
-          src={`http://localhost:5000/uploads/${student.img}`}
+          src={student.img ? `http://localhost:5000/uploads/${student.img}` : require('../assets/bannerImg.png')}
           alt={student.name}
           className="user-image"
-          width={10}
-          height={10}
+          style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: '10px', border: '2px solid #e0e7ef', background: '#f3f4f6' }}
         />
       </div>
       <div className="card-header">
-        <h3>{student.name}</h3>
+        <h3 style={{ textTransform: 'uppercase' }}>{student.name}</h3>
         <StatusBadge url={student.url} />
       </div>
       <p>
