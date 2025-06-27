@@ -764,3 +764,40 @@
   margin-bottom: 20px;
 }
 
+.register-btn-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 15px 12px 24px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
+  position: relative;
+  outline: none;
+}
+.register-btn-modern:hover, .register-btn-modern:focus {
+  background: #222;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+.register-arrow-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-left: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.register-arrow-circle svg {
+  display: block;
+}
+

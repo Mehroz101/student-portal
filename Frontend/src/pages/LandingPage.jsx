@@ -79,7 +79,17 @@ const LandingPage = () => {
               play a vital role in shaping the success of this student portal
               initiative.
             </p>
-            {/* <button className="read-more">Read More</button> */}
+            {(!localStorage.getItem("usertoken")) && (
+            <button className="register-btn-modern" onClick={() => navigate('/userlogin')}>
+              Register
+              <span className="register-arrow-circle" style={{ marginLeft: '30px' }}>
+                <svg width="100" height="100" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="9" cy="9" r="9" fill="#fff"/>
+                  <path d="M7.5 5.5L11 9L7.5 12.5" stroke="#0000FF" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          )}
           </div>
           <div className="right">
             <div className="image">
